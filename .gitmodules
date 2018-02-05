@@ -1,0 +1,3 @@
+[submodule "qanda/src/qanda"]
+	path = qanda/src/qanda
+	url = https://github.com/hughugsy/qanda.git
