@@ -52,7 +52,7 @@ class PostDetailPage extends Component {
     );
     if (showAddAnswer) {
       pageContent = (
-        <AnswerWidget addPost={this.handleAddPost} />
+        <AnswerWidget addPost={this.handleAddPost} cancelPost={this.toggleAdd} />
       );
     }
     const answerCard = (

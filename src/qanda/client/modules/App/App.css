@@ -1,6 +1,14 @@
 .container {
   max-width: 980px;
-  width: 100%;
+  width: 60%;
   padding: 15px;
   margin: 0 auto;
+  float: left;
+}
+.leftsidebar {
+  width: 20%;
+  float: left;
+}
+.menubar {
+  height: 65px;
 }
