@@ -41,6 +41,7 @@ import onlineresources from './routes/onlineresource.routes';
 import answers from './routes/answer.routes';
 import dummyData from './dummyData';
 import serverConfig from './config';
+import tutorship from './routes/tutorship.routes';
 
 // Set native promises as mongoose promise
 mongoose.Promise = global.Promise;
@@ -64,6 +65,7 @@ app.use(Express.static(path.resolve(__dirname, '../dist/client')));
 app.use('/api', posts);
 app.use('/api', onlineresources);
 app.use('/api', answers);
+app.use('/api', tutorship);
 
 // Render Initial HTML
 const renderFullPage = (html, initialState) => {

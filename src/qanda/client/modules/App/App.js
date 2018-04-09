@@ -50,20 +50,20 @@ const materialStyles = theme => ({
 });
 
 // Import Components
-<<<<<<< HEAD
+
 import Helmet from 'react-helmet';
 import DevTools from './components/DevTools';
 import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
 import AnnouncementItems from './components/Announcement/AnnouncementItems';
-=======
+
 // import Helmet from 'react-helmet';
 // import DevTools from './components/DevTools';
 // import Header from './components/Header/Header';
 // import MenuBar from './components/Header/MenuBar';
 // import LeftSideBar from './components/LeftSideBar/LeftSideBar';
 // import Footer from './components/Footer/Footer';
->>>>>>> 00419ecef5741e9b4a360edf1bd02a10bf6278f7
+
 
 
 // Import Actions
@@ -154,7 +154,7 @@ export class App extends Component {
               <ListItemText primary="Online Resources" />
             </ListItem>
             <Divider />
-            <ListItem button>
+            <ListItem component={Link} to="/tutorship" button>
               <ListItemIcon>
                 <DraftsIcon />
               </ListItemIcon>
@@ -164,7 +164,6 @@ export class App extends Component {
         </Drawer>
         <div className={classes.container}>
           {this.props.children}
->>>>>>> 00419ecef5741e9b4a360edf1bd02a10bf6278f7
         </div>
       </div>
     );
