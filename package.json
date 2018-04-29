@@ -1,0 +1,25 @@
+{
+  "dependencies": {
+    "material-ui": "^1.0.0-beta.38",
+    "material-ui-icons": "^1.0.0-alpha.19",
+    "yarn": "^1.5.1"
+  },
+  "name": "qanda",
+  "description": "",
+  "version": "1.0.0",
+  "main": "index.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hughugsy/qanda.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hughugsy/qanda/issues"
+  },
+  "homepage": "https://github.com/hughugsy/qanda#readme"
+}

@@ -50,6 +50,13 @@ const materialStyles = theme => ({
 });
 
 // Import Components
+
+import Helmet from 'react-helmet';
+import DevTools from './components/DevTools';
+import Header from './components/Header/Header';
+import Footer from './components/Footer/Footer';
+import AnnouncementItems from './components/Announcement/AnnouncementItems';
+
 // import Helmet from 'react-helmet';
 // import DevTools from './components/DevTools';
 // import Header from './components/Header/Header';
@@ -58,18 +65,47 @@ const materialStyles = theme => ({
 // import Footer from './components/Footer/Footer';
 
 
+
 // Import Actions
 import { toggleAddPost } from './AppActions';
 // import { switchLanguage } from '../../modules/Intl/IntlActions';
 
+var suhh = [ 
+    {
+      title: 'suhh',
+      content: 'suhh content',
+      cuid: 'suhh key',
+      dateAdded: 'suhh dateAdded'
+    },
+    {
+      title: 'wusuhh',
+      content: 'wusuhh content',
+      cuid: 'wusuhh key',
+      dateAdded: 'wusuhh dateAdded'
+    },
+    {
+      title: 'wuzuhh',
+      content: 'wuzuhh content',
+      cuid: 'wuzuhh key',
+      dateAdded: 'wuzuhh dateAdded'
+    }
+  ];
+
+  
+
 export class App extends Component {
   constructor(props) {
     super(props);
-    this.state = { isMounted: false };
+    this.state = { 
+      isMounted: false, 
+      announcementItems: suhh
+    };
   }
 
   componentDidMount() {
-    this.setState({isMounted: true}); // eslint-disable-line
+    this.setState({
+      isMounted: true}
+    ); // eslint-disable-line
   }
 
   toggleAddPostSection = () => {
@@ -96,7 +132,7 @@ export class App extends Component {
               <ListItemText primary="Online Resources" />
             </ListItem>
             <Divider />
-            <ListItem button>
+            <ListItem component={Link} to="/tutorship" button>
               <ListItemIcon>
                 <DraftsIcon />
               </ListItemIcon>
