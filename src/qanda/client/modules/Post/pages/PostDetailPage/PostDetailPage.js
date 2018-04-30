@@ -36,9 +36,9 @@ class PostDetailPage extends Component {
   };
   */
 
-  handleAddPost = (content) => {
+  handleAddPost = (content, question) => {
     this.props.dispatch(toggleAddAnswer());
-    this.props.dispatch(addAnswerRequest({ content }));
+    this.props.dispatch(addAnswerRequest({ content, question }));
   };
 
   toggleAdd = () => {
@@ -52,7 +52,7 @@ class PostDetailPage extends Component {
     );
     if (showAddAnswer) {
       pageContent = (
-        <AnswerWidget addPost={this.handleAddPost} cancelPost={this.toggleAdd} />
+        <AnswerWidget addPost={this.handleAddPost} question={post.cuid} cancelPost={this.toggleAdd} />
       );
     }
     const answerCard = (

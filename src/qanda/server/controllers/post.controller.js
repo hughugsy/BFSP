@@ -2,6 +2,7 @@ import Post from '../models/post';
 import cuid from 'cuid';
 import slug from 'limax';
 import sanitizeHtml from 'sanitize-html';
+import algoliasearch from 'algoliasearch';
 
 /**
  * Get all posts
@@ -28,6 +29,17 @@ export function addPost(req, res) {
   if (!req.body.post.name || !req.body.post.title || !req.body.post.content) {
     res.status(403).end();
   }
+
+  const client = algoliasearch('VJQN417WCB', 'f34396b9a1013200b2e1ea8ec39d00e8');
+  const trackingsIndex = client.initIndex('posts');
+
+  trackingsIndex.addObject(req.body.post, (error, content) => {
+    if (error) {
+      console.log(error);
+    } else {
+      console.log('successfully indexed ', content);
+    }
+  });
 
   const newPost = new Post(req.body.post);
 

@@ -1,6 +1,7 @@
 import Answer from '../models/answer';
 import cuid from 'cuid';
 import sanitizeHtml from 'sanitize-html';
+// import algoliasearch from 'algoliasearch';
 
 /**
  * Get all posts
@@ -24,14 +25,26 @@ export function getPosts(req, res) {
  * @returns void
  */
 export function addPost(req, res) {
-  if (!req.body.post.content) {
+  if (!req.body.post.content || !req.body.post.question) {
     res.status(403).end();
   }
+  /*
+  const client = algoliasearch('VJQN417WCB', 'f34396b9a1013200b2e1ea8ec39d00e8');
+  const trackingsIndex = client.initIndex('posts');
+
+  trackingsIndex.addObject(req.body.post, (error, content) => {
+    if (error) {
+      console.log(error);
+    } else {
+      console.log('successfully indexed ', content);
+    }
+  });*/
 
   const newPost = new Answer(req.body.post);
 
   // Let's sanitize inputs
   newPost.content = sanitizeHtml(newPost.content);
+  newPost.question = sanitizeHtml(newPost.question);
 
   newPost.cuid = cuid();
   newPost.save((err, saved) => {

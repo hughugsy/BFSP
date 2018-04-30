@@ -19,6 +19,7 @@ if (process.env.NODE_ENV !== 'production') {
   require('./modules/Post/pages/PostListPage/PostListPage');
   require('./modules/Post/pages/PostDetailPage/PostDetailPage');
   require('./modules/Post/pages/OnlineResourcesListPage/OnlineResourcesListPage');
+  require('./modules/Post/pages/OnlineResourceDetailPage/OnlineResourceDetailPage');
 }
 
 // react-router setup with code-splitting
@@ -45,6 +46,14 @@ export default (
       getComponent={(nextState, cb) => {
         require.ensure([], require => {
           cb(null, require('./modules/Post/pages/OnlineResourcesListPage/OnlineResourcesListPage').default);
+        });
+      }}
+    />
+    <Route
+      path="/onlineresources/:slug-:cuid"
+      getComponent={(nextState, cb) => {
+        require.ensure([], require => {
+          cb(null, require('./modules/Post/pages/OnlineResourceDetailPage/OnlineResourceDetailPage').default);
         });
       }}
     />

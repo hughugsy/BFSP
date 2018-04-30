@@ -1,165 +1,60 @@
 import React, { Component, PropTypes } from 'react';
-import { connect } from 'react-redux';
-import { withStyles } from 'material-ui/styles';
-import Drawer from 'material-ui/Drawer';
-import AppBar from 'material-ui/AppBar';
-import Toolbar from 'material-ui/Toolbar';
-import List, { ListItem, ListItemIcon, ListItemText } from 'material-ui/List';
-import Divider from 'material-ui/Divider';
-import InboxIcon from 'material-ui-icons/Inbox';
-import DraftsIcon from 'material-ui-icons/Drafts';
-import green from 'material-ui/colors/green';
 import { Link } from 'react-router';
-import IconButton from 'material-ui/IconButton';
-
-// Import Style
-// import styles from './App.css';
-
-const materialStyles = theme => ({
-  root: {
-    flexGrow: 1,
-    zIndex: 1,
-    overflow: 'hidden',
-    position: 'relative',
-    display: 'flex',
-  },
-  appBar: {
-    zIndex: theme.zIndex.drawer + 1,
-    backgroundColor: green[500],
-    height: '65px',
-  },
-  drawerPaper: {
-    position: 'relative',
-    width: '100%',
-    float: 'left',
-    paddingTop: '65px',
-  },
-  content: {
-    flexGrow: 1,
-    backgroundColor: theme.palette.background.default,
-    padding: theme.spacing.unit * 3,
-    minWidth: 0, // So the Typography noWrap works
-  },
-  container: {
-    width: '60%',
-    float: 'left',
-    paddingTop: '65px',
-    paddingLeft: '10px',
-  },
-  toolbar: theme.mixins.toolbar,
-});
-
-// Import Components
-
-import Helmet from 'react-helmet';
-import DevTools from './components/DevTools';
-import Header from './components/Header/Header';
-import Footer from './components/Footer/Footer';
-import AnnouncementItems from './components/Announcement/AnnouncementItems';
-
-// import Helmet from 'react-helmet';
-// import DevTools from './components/DevTools';
-// import Header from './components/Header/Header';
-// import MenuBar from './components/Header/MenuBar';
-// import LeftSideBar from './components/LeftSideBar/LeftSideBar';
-// import Footer from './components/Footer/Footer';
-
-
+import 'bootstrap/dist/css/bootstrap.min.css';
+import './App.css';
 
 // Import Actions
 import { toggleAddPost } from './AppActions';
-// import { switchLanguage } from '../../modules/Intl/IntlActions';
 
-var suhh = [ 
-    {
-      title: 'suhh',
-      content: 'suhh content',
-      cuid: 'suhh key',
-      dateAdded: 'suhh dateAdded'
-    },
-    {
-      title: 'wusuhh',
-      content: 'wusuhh content',
-      cuid: 'wusuhh key',
-      dateAdded: 'wusuhh dateAdded'
-    },
-    {
-      title: 'wuzuhh',
-      content: 'wuzuhh content',
-      cuid: 'wuzuhh key',
-      dateAdded: 'wuzuhh dateAdded'
-    }
-  ];
+import Search from '../Post/components/Search/Search';
 
-  
 
 export class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = { 
-      isMounted: false, 
-      announcementItems: suhh
-    };
-  }
-
-  componentDidMount() {
-    this.setState({
-      isMounted: true}
-    ); // eslint-disable-line
-  }
 
   toggleAddPostSection = () => {
     this.props.dispatch(toggleAddPost());
   };
 
   render() {
-    const { classes } = this.props;
     return (
-      <div className={classes.root}>
-        <AppBar position="absolute" className={classes.appBar}>
-          <Toolbar>
-            <IconButton component={Link} to="/" >
-              QandA
-            </IconButton>
-          </Toolbar>
-        </AppBar>
-        <Drawer variant="permanent" classes={{ paper: classes.drawerPaper }} >
-          <List component="nav">
-            <ListItem component={Link} to="/onlineresources" button >
-              <ListItemIcon>
-                <InboxIcon />
-              </ListItemIcon>
-              <ListItemText primary="Online Resources" />
-            </ListItem>
-            <Divider />
-            <ListItem component={Link} to="/tutorship" button>
-              <ListItemIcon>
-                <DraftsIcon />
-              </ListItemIcon>
-              <ListItemText primary="Tutorship" />
-            </ListItem>
-          </List>
-        </Drawer>
-        <div className={classes.container}>
-          {this.props.children}
+      <div >
+        <div style={{ postion: 'relative' }}>
+          <div style={{ position: 'relative' }}>
+            <nav className="navbar navbar-expand-lg navbar-light" style={{ background: '#0084b4' }}>
+              <Link className="navbar-brand" to="/" style={{ color: 'white' }} >QandA </Link>
+
+            </nav>
+          </div>
+          <div style={{ position: 'absolute', top: 0, marginTop: '10px', right: 0, paddingRight: '40px' }}>
+            <Search />
+          </div>
+        </div>
+        <div className="container-fluid">
+          <div className="row">
+            <div className="col-2" style={{ top: '20px' }}>
+              <div className="list-group" role="tablist" >
+                <Link className="list-group-item list-group-item-action" role="tab" to="/">Questions</Link>
+                <Link className="list-group-item list-group-item-action" role="tab" to="/onlineresources">Online Resources</Link>
+                <Link className="list-group-item list-group-item-action" role="tab" >Tutorship</Link>
+                <Link className="list-group-item list-group-item-action" role="tab" >Teacher Rating</Link>
+                <Link className="list-group-item list-group-item-action" role="tab" >Buy and Sell</Link>
+              </div>
+            </div>
+            <div className="col-10">
+              {this.props.children}
+            </div>
+          </div>
         </div>
       </div>
     );
   }
 }
-// {this.state.isMounted && !window.devToolsExtension && process.env.NODE_ENV === 'development' && <DevTools />}
+
 App.propTypes = {
   children: PropTypes.object.isRequired,
   dispatch: PropTypes.func.isRequired,
-  intl: PropTypes.object.isRequired,
-  classes: PropTypes.object.isRequired,
 };
 
-// Retrieve data from store as props
-function mapStateToProps(store) {
-  return {
-    intl: store.intl,
-  };
-}
 
-export default connect(mapStateToProps)(withStyles(materialStyles)(App));
+export default App;
+
