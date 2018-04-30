@@ -19,6 +19,8 @@ if (process.env.NODE_ENV !== 'production') {
   require('./modules/Post/pages/PostListPage/PostListPage');
   require('./modules/Post/pages/PostDetailPage/PostDetailPage');
   require('./modules/Post/pages/OnlineResourcesListPage/OnlineResourcesListPage');
+  require('./modules/Post/pages/TeacherRatingsListPage/TeacherRatingsListPage');
+  require('./modules/Post/pages/TeacherRatingsListPage/TeacherRatingDetailPage');
 }
 
 // react-router setup with code-splitting
@@ -45,6 +47,22 @@ export default (
       getComponent={(nextState, cb) => {
         require.ensure([], require => {
           cb(null, require('./modules/Post/pages/OnlineResourcesListPage/OnlineResourcesListPage').default);
+        });
+      }}
+    />
+    <Route
+      path="/teacherratings"
+      getComponent={(nextState, cb) => {
+        require.ensure([], require => {
+          cb(null, require('./modules/Post/pages/TeacherRatingsListPage/TeacherRatingsListPage').default);
+        });
+      }}
+    />
+    <Route
+      path="/trcomments/:slug-:cuid"
+      getComponent={(nextState, cb) => {
+        require.ensure([], require => {
+          cb(null, require('./modules/Post/pages/TeacherRatingsListPage/TeacherRatingDetailPage').default);
         });
       }}
     />

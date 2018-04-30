@@ -9,8 +9,12 @@ import posts from './modules/Post/PostReducer';
 import intl from './modules/Intl/IntlReducer';
 import onres from './modules/Post/pages/OnlineResourcesListPage/OnlineResourceReducer';
 import orbutton from './modules/Post/pages/OnlineResourcesListPage/OrButtonReducer';
+import teachrat from './modules/Post/pages/TeacherRatingsListPage/TeacherRatingReducer';
+import trbutton from './modules/Post/pages/TeacherRatingsListPage/TRButtonReducer';
 import answer from './modules/Post/pages/PostDetailPage/AnswerReducer';
 import answerbutton from './modules/Post/pages/PostDetailPage/AnswerButtonReducer';
+import trcomment from './modules/Post/pages/TeacherRatingsListPage/TRCommentReducer';
+import trcbutton from './modules/Post/pages/TeacherRatingsListPage/TRCButtonReducer';
 // Combine all reducers into one root reducer
 export default combineReducers({
   app,
@@ -18,6 +22,10 @@ export default combineReducers({
   intl,
   onres,
   orbutton,
+  teachrat,
+  trbutton,
   answer,
   answerbutton,
+  trcomment,
+  trcbutton,
 });

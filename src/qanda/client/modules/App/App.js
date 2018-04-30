@@ -49,56 +49,18 @@ const materialStyles = theme => ({
   toolbar: theme.mixins.toolbar,
 });
 
-// Import Components
-
-import Helmet from 'react-helmet';
-import DevTools from './components/DevTools';
-import Header from './components/Header/Header';
-import Footer from './components/Footer/Footer';
-import AnnouncementItems from './components/Announcement/AnnouncementItems';
-
-// import Helmet from 'react-helmet';
-// import DevTools from './components/DevTools';
-// import Header from './components/Header/Header';
-// import MenuBar from './components/Header/MenuBar';
-// import LeftSideBar from './components/LeftSideBar/LeftSideBar';
-// import Footer from './components/Footer/Footer';
-
 
 
 // Import Actions
 import { toggleAddPost } from './AppActions';
 // import { switchLanguage } from '../../modules/Intl/IntlActions';
-
-var suhh = [ 
-    {
-      title: 'suhh',
-      content: 'suhh content',
-      cuid: 'suhh key',
-      dateAdded: 'suhh dateAdded'
-    },
-    {
-      title: 'wusuhh',
-      content: 'wusuhh content',
-      cuid: 'wusuhh key',
-      dateAdded: 'wusuhh dateAdded'
-    },
-    {
-      title: 'wuzuhh',
-      content: 'wuzuhh content',
-      cuid: 'wuzuhh key',
-      dateAdded: 'wuzuhh dateAdded'
-    }
-  ];
-
   
 
 export class App extends Component {
   constructor(props) {
     super(props);
     this.state = { 
-      isMounted: false, 
-      announcementItems: suhh
+      isMounted: false
     };
   }
 
@@ -137,6 +99,13 @@ export class App extends Component {
                 <DraftsIcon />
               </ListItemIcon>
               <ListItemText primary="Tutorship" />
+            </ListItem>
+            <Divider />
+            <ListItem component={Link} to="/teacherratings" button>
+              <ListItemIcon>
+                <DraftsIcon />
+              </ListItemIcon>
+              <ListItemText primary="Teacher Ratings" />
             </ListItem>
           </List>
         </Drawer>
