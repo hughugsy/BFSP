@@ -57,7 +57,7 @@ export class AnswerWidget extends Component {
   addPost = () => {
     const { content } = this.state;
     if (content) {
-      this.props.addPost(content);
+      this.props.addPost(content, this.props.question);
       this.setState({
         content: '',
       });
@@ -111,6 +111,7 @@ AnswerWidget.propTypes = {
   // showAddPost: PropTypes.bool.isRequired,
   cancelPost: PropTypes.func.isRequired,
   classes: PropTypes.object.isRequired,
+  question: PropTypes.string.isRequired,
 };
 
 export default withStyles(materialStyles)(AnswerWidget);

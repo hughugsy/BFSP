@@ -9,7 +9,7 @@ function OnlineResourcesItem(props) {
   return (
     <div className={styles['single-post']}>
       <h3 className={styles['post-title']}>
-        <Link to={`/posts/${props.post.slug}-${props.post.cuid}`} >
+        <Link to={`/onlineresources/${props.post.slug}-${props.post.cuid}`} >
           {props.post.title}
         </Link>
       </h3>

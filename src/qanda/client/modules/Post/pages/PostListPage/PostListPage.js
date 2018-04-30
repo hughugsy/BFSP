@@ -1,9 +1,11 @@
 import React, { PropTypes, Component } from 'react';
 import { connect } from 'react-redux';
+import { InstantSearch, SearchBox, Hits } from 'react-instantsearch/dom';
 
 // Import Components
 import PostList from '../../components/PostList';
 import PostCreateWidget from '../../components/PostCreateWidget/PostCreateWidget';
+import Result from '../../components/Result/Result';
 
 // Import Actions
 import { addPostRequest, fetchPosts, deletePostRequest } from '../../PostActions';
@@ -32,7 +34,7 @@ class PostListPage extends Component {
   render() {
     return (
       <div>
-        <PostCreateWidget addPost={this.handleAddPost} showAddPost={this.props.showAddPost} />
+        <PostCreateWidget addPost={this.handleAddPost} showAddPost />
         <PostList handleDeletePost={this.handleDeletePost} posts={this.props.posts} />
       </div>
     );

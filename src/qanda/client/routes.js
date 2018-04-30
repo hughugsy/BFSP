@@ -19,6 +19,7 @@ if (process.env.NODE_ENV !== 'production') {
   require('./modules/Post/pages/PostListPage/PostListPage');
   require('./modules/Post/pages/PostDetailPage/PostDetailPage');
   require('./modules/Post/pages/OnlineResourcesListPage/OnlineResourcesListPage');
+  require('./modules/Post/pages/OnlineResourceDetailPage/OnlineResourceDetailPage');
   require('./modules/Post/pages/TeacherRatingsListPage/TeacherRatingsListPage');
   require('./modules/Post/pages/TeacherRatingsListPage/TeacherRatingDetailPage');
 }
@@ -51,6 +52,14 @@ export default (
       }}
     />
     <Route
+      path="/onlineresources/:slug-:cuid"
+      getComponent={(nextState, cb) => {
+        require.ensure([], require => {
+          cb(null, require('./modules/Post/pages/OnlineResourceDetailPage/OnlineResourceDetailPage').default);
+        });
+      }}
+    />
+    <Route
       path="/teacherratings"
       getComponent={(nextState, cb) => {
         require.ensure([], require => {
@@ -63,7 +72,7 @@ export default (
       getComponent={(nextState, cb) => {
         require.ensure([], require => {
           cb(null, require('./modules/Post/pages/TeacherRatingsListPage/TeacherRatingDetailPage').default);
-        });
+          });
       }}
     />
   </Route>
