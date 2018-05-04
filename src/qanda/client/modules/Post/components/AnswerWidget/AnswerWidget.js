@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
+
 export class AnswerWidget extends Component {
   constructor(props) {
     super(props);
@@ -25,22 +26,25 @@ export class AnswerWidget extends Component {
   }
 
   render() {
+    // const cls = `${styles.form} ${(this.props.showAddPost ? styles.appear : '')}`;
+    // const { classes } = this.props;
     return (
-      <div className="container">
-        <form>
-          <div className="form-group">
-            <label htmlFor="exampleInputEmail1">Email address</label>
-            <input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email"> </input>
-            <small id="emailHelp" className="form-text text-muted">We'll never share your email with anyone else.</small>
+      <form onSubmit={this.handleSubmit} >
+        <div className="container" style={{ padding: '10px', border: '1px solid #AAAAAA', width: '80%' }} >
+          <div className="panel panel-default" >
+            <div className="panel-heading">
+              <label htmlFor="content">Type your answer here:</label>
+            </div>
+            <div className="panel-body" style={{ overflow: 'hidden' }}>
+              <textarea className="form-control" rows="5" id="content"></textarea>
+              <div style={{ float: 'right' }}>
+                <button type="submit" className="btn btn-secondary" onClick={this.props.cancelPost} style={{ marginRight: '3px', marginTop: '5px' }}>CANCEL</button>
+                <button type="submit" className="btn btn-primary" onClick={this.addPost} style={{ marginTop: '5px' }} >POST</button>
+              </div >
+            </div >
           </div>
-          <div className="form-group">
-            <label htmlFor="comment">Answer</label>
-            <textarea className="form-control" rows="5" id="comment"></textarea>
-          </div>
-          <button type="submit" className="btn btn-primary">POST</button>
-          <button type="submit" className="btn btn-secondary">CANCEL</button>
-        </form>
-      </div>
+        </div>
+      </form>
     );
   }
 }
