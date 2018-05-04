@@ -84,8 +84,21 @@ export class App extends Component {
                 <Link className="list-group-item list-group-item-action" role="tab" >Buy and Sell</Link>
               </div>
             </div>
-            <div className="col-10">
+            <div className="col-8">
               {this.props.children}
+            </div>
+            <div className="col-2" style={{ top: '10px' }}>
+              <div class="list-group">
+                <a href="#" className="list-group-item list-group-item-action">Announcements</a>
+                <a href="https://news.sportbox.ru/" className="list-group-item list-group-item-action list-group-item-primary">SPORT NEWS</a>
+                <a href="https://github.com/" className="list-group-item list-group-item-action list-group-item-success">GITHUB</a>
+                <a href="https://getbootstrap.com/docs/4.1/components/list-group/" className="list-group-item list-group-item-action list-group-item-primary">BOOTSTRAP</a>
+                <a href="https://www.linkedin.com/" className="list-group-item list-group-item-action list-group-item-primary">LINKEDIN</a>
+                <a href="https://www.google.com.tr/?gws_rd=ssl" className="list-group-item list-group-item-action list-group-item-primary">GOOGLE</a>
+                <a href="https://github.com/hughugsy" className="list-group-item list-group-item-action list-group-item-success">HUGHUGSY</a>
+                <a href="https://github.com/z-e-r-0" className="list-group-item list-group-item-action list-group-item-success">z-e-r-0</a>
+                <a href="https://github.com/soleh23" className="list-group-item list-group-item-action list-group-item-success">SOLEH23</a>
+              </div>
             </div>
           </div>
         </div>
