@@ -1,10 +1,9 @@
 import React, { Component, PropTypes } from 'react';
 // import { injectIntl, intlShape, } from 'react-intl';
 // import ReactTags from 'react-tag-autocomplete';
-import Button from 'material-ui/Button';
-import { withStyles } from 'material-ui/styles';
-import TextField from 'material-ui/TextField';
-import Paper from 'material-ui/Paper';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import Select from 'react-select';
+import 'react-select/dist/react-select.css';
 
 // Import Style
 import styles from './OnlineResourcesWidget.css';
@@ -139,54 +138,82 @@ export class OnlineResourcesWidget extends Component {
   <a className={styles['post-submit-button']} href="#" onClick={this.addPost}><FormattedMessage id="submit" /></a>
   <a className={styles['post-submit-button']} href="#" onClick={this.props.cancelPost}>Cancel</a>
   */
-  render() {
-    const cls = `${styles.form} ${(this.props.showAddPost ? styles.appear : '')}`;
-    const { classes } = this.props;
+
+
+
+
+
+
+
+render() {
+  const cls = `${styles.form} ${(this.props.showAddPost ? styles.appear : '')}`;
+  const { classes } = this.props;
+  const { selectedOption } = this.state;
+
+  return (   
+<form onSubmit={this.handleSubmit} >
+  <div className="container" style={{padding: '10px', border: '1px solid #AAAAAA', width: '80%'}} >
+    <div className="panel panel-default" >
+      <div className="panel-heading">
+        <table className="table table-bordered" >
+          <thead >
+            <tr >
+              <th style={{ verticalAlign: 'middle' }}> Course </th>
+              <th style={{ width: '90%' }}><Select
+                        name="form-field-name"
+                        value={selectedOption}
+                        onChange={this.handleChange}
+                        multi={true}
+                        simpleValue={true}
+                        options={[
+                          { value: 'one', label: 'One' },
+                          { value: 'two', label: 'Two' },
+              ]}
+              />
+            </th>
+            </tr>
+          </thead>
+        </table>
+      </div>
+
+      <div className="panel-body" style={{overflow: 'hidden'}}>
+          <textarea className="form-control" rows="5" id="content" ></textarea>
+          <div style={{float: 'right'}}>
+            <button type="submit"  style={{marginTop: '5px', marginRight: '2px'}} className="btn btn-secondary" onClick={this.props.cancelPost} >CANCEL</button>         
+            <button type="submit" style={{marginTop: '5px'}} className="btn btn-primary" onClick={this.addPost}>POST</button>
+          </div>
+      </div>
+    </div>
+  </div>     
+</form>
+
+
+
+
+  );
+
+/*
     return (
-      <div className={cls}>
-        <div className={styles['form-content']}>
-          <Paper className={classes.root} elevation={4}>
-            <div className={classes.container}>
-              <TextField
-                onChange={this.handleTitleChange}
-                label="Title"
-                InputProps={{
-                  disableUnderline: true,
-                  classes: {
-                    root: classes.textFieldRoot,
-                    input: classes.titleFieldInput,
-                  },
-                }}
-                InputLabelProps={{
-                  shrink: true,
-                  className: classes.textFieldFormLabel,
-                }}
-              />
-              <TextField
-                onChange={this.handleContentChange}
-                multiline
-                label="Description"
-                id="bootstrap-input"
-                InputProps={{
-                  disableUnderline: true,
-                  classes: {
-                    root: classes.textFieldRoot,
-                    input: classes.contentFieldInput,
-                  },
-                }}
-                InputLabelProps={{
-                  shrink: true,
-                  className: classes.textFieldFormLabel,
-                }}
-              />
-            </div>
-            <div></div>
-            <Button variant="raised" color="primary" onClick={this.addPost}>Post</Button>
-            <Button variant="raised" color="secondary" onClick={this.props.cancelPost} >Cancel</Button>
-          </Paper>
+
+
+
+
+      <div className="container" >         
+        <div className="panel panel-default">
+          <div className="panel-body">
+
+            
+              
+            
+
+          </div>
         </div>
       </div>
+
+
     );
+
+    */
   }
 }
 
@@ -198,4 +225,4 @@ OnlineResourcesWidget.propTypes = {
 };
 
 // export default injectIntl(OnlineResourcesWidget);
-export default withStyles(materialStyles)(OnlineResourcesWidget);
+export default OnlineResourcesWidget;
