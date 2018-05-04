@@ -1,51 +1,8 @@
 import React, { Component, PropTypes } from 'react';
-// import { injectIntl, intlShape, } from 'react-intl';
-// import ReactTags from 'react-tag-autocomplete';
-import Button from 'material-ui/Button';
-import { withStyles } from 'material-ui/styles';
-import TextField from 'material-ui/TextField';
-import Paper from 'material-ui/Paper';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
-// Import Style
-import styles from './AnswerWidget.css';
 
-const materialStyles = theme => ({
-  container: {
-    display: 'flex',
-    flexWrap: 'wrap',
-  },
-  formControl: {
-    margin: theme.spacing.unit,
-  },
-  textFieldRoot: {
-    padding: 0,
-    'label + &': {
-      marginTop: theme.spacing.unit * 3,
-    },
-  },
-  contentFieldInput: {
-    borderRadius: 4,
-    backgroundColor: theme.palette.common.white,
-    border: '1px solid #ced4da',
-    fontSize: 16,
-    padding: '10px 12px',
-    width: '450px',
-    height: '100px',
-    transition: theme.transitions.create(['border-color', 'box-shadow']),
-    '&:focus': {
-      borderColor: '#80bdff',
-      boxShadow: '0 0 0 0.2rem rgba(0,123,255,.25)',
-    },
-  },
-  textFieldFormLabel: {
-    fontSize: 18,
-  },
-  root: theme.mixins.gutters({
-    paddingTop: 16,
-    paddingBottom: 16,
-    marginTop: theme.spacing.unit * 3,
-  }),
-});
+
 
 export class AnswerWidget extends Component {
   constructor(props) {
@@ -72,36 +29,24 @@ export class AnswerWidget extends Component {
 
   render() {
     // const cls = `${styles.form} ${(this.props.showAddPost ? styles.appear : '')}`;
-    const { classes } = this.props;
+    // const { classes } = this.props;
     return (
-      <div>
-        <div className={styles['form-content']}>
-          <Paper className={classes.root} elevation={4}>
-            <div className={classes.container}>
-              <TextField
-                onChange={this.handleContentChange}
-                multiline
-                label="Description"
-                id="bootstrap-input"
-                InputProps={{
-                  disableUnderline: true,
-                  classes: {
-                    root: classes.textFieldRoot,
-                    input: classes.contentFieldInput,
-                  },
-                }}
-                InputLabelProps={{
-                  shrink: true,
-                  className: classes.textFieldFormLabel,
-                }}
-              />
+      <form onSubmit={this.handleSubmit} >
+        <div className="container" style={{padding: '10px', border: '1px solid #AAAAAA', width: '80%'}} >
+          <div className="panel panel-default" >
+            <div className="panel-heading">
+              <label for="content">Type your answer here:</label>
             </div>
-            <div></div>
-            <Button variant="raised" color="primary" onClick={this.addPost}>Post</Button>
-            <Button variant="raised" color="secondary" onClick={this.props.cancelPost} >Cancel</Button>
-          </Paper>
-        </div>
-      </div>
+            <div className="panel-body" style={{overflow: 'hidden'}}>
+              <textarea className="form-control" rows="5" id="content"></textarea>
+              <div style={{float: 'right'}}>
+                <button type="submit" className="btn btn-secondary" onClick={this.props.cancelPost} style={{  marginRight: '3px', marginTop: '5px'}}>CANCEL</button>             
+                <button type="submit" className="btn btn-primary" onClick={this.addPost} style={{ marginTop: '5px'}} >POST</button>
+              </div >
+            </div >
+          </div>
+        </div>     
+      </form>
     );
   }
 }
@@ -110,8 +55,7 @@ AnswerWidget.propTypes = {
   addPost: PropTypes.func.isRequired,
   // showAddPost: PropTypes.bool.isRequired,
   cancelPost: PropTypes.func.isRequired,
-  classes: PropTypes.object.isRequired,
   question: PropTypes.string.isRequired,
 };
 
-export default withStyles(materialStyles)(AnswerWidget);
+export default AnswerWidget;
