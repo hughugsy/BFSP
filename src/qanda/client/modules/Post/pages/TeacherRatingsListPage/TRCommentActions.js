@@ -18,6 +18,7 @@ export function addTRCOMMENTRequest(post) {
     return callApi('/trcomments', 'post', {
       post: {
         content: post.content,
+        teacher: post.teacher,
       },
     }).then(res => dispatch(addTRCOMMENT(res.post)));
   };

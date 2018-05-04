@@ -26,14 +26,14 @@ class TeacherRatingsListPage extends Component {
 
   handleAddPost = (name, grading, teaching, workload, content) => {
     this.props.dispatch(toggleAddTR());
-    this.props.dispatch(addTRRequest({ name, grading, teaching, workload, content }));
+    this.props.dispatch(addTRRequest({ name, grading, teaching, workload}));
   };
 
   render() {
     return (
       <div>
         {/*<TeacherRatingsWidget addPost={this.handleAddPost} showAddPost={true/*this.props.showAddPost} />*/}
-        <TeacherRatingsList handleDeletePost={this.handleDeletePost} posts={this.props.posts} />
+        <TeacherRatingsList handleDeletePost={this.handleDeletePost} posts={this.props.posts} addPost = {this.handleAddPost}/>
       </div>
     );
   }
@@ -57,7 +57,8 @@ TeacherRatingsListPage.propTypes = {
     grading: PropTypes.number.isRequired,
     teaching: PropTypes.number.isRequired,
     workload: PropTypes.number.isRequired,
-    content: PropTypes.string.isRequired,
+    cuid: PropTypes.string.isRequired,
+    slug: PropTypes.string.isRequired,
   })).isRequired,
   showAddPost: PropTypes.bool.isRequired,
   dispatch: PropTypes.func.isRequired,

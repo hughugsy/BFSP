@@ -25,7 +25,7 @@ export function getTeacherRatings(req, res) {
  * @returns void
  */
 export function addTeacherRating(req, res) {
-  if (!req.body.post.name || !req.body.post.content) {
+  if (!req.body.post.name) {
     res.status(403).end();
   }
 
@@ -37,7 +37,6 @@ export function addTeacherRating(req, res) {
   newPost.grading = sanitizeHtml(newPost.grading);
   newPost.teaching = sanitizeHtml(newPost.teaching);
   newPost.workload = sanitizeHtml(newPost.workload);
-  newPost.content = sanitizeHtml(newPost.content);
 
   newPost.slug = slug(newPost.name.toLowerCase(), { lowercase: true });
   newPost.cuid = cuid();

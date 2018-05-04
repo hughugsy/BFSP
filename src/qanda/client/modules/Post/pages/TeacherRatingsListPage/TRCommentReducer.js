@@ -28,7 +28,7 @@ const TRCommentReducer = (state = initialState, action) => {
 /* Selectors */
 
 // Get all posts
-export const getTRComments = state => state.trcomment.data;
+export const getTRComments = (state, teacher) => state.trcomment.data.filter(post => post.teacher === teacher);
 
 // Get post by cuid
 export const getTRComment = (state, cuid) => state.trcomment.data.filter(post => post.cuid === cuid)[0];

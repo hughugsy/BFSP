@@ -7,7 +7,6 @@ const trSchema = new Schema({
   grading: {type: 'Number', required: true},
   teaching: {type: 'Number', required: true},
   workload: {type: 'Number', required: true},
-  content: { type: 'String', required: true },
   slug: { type: 'String', required: true },
   cuid: { type: 'String', required: true },
   dateAdded: { type: 'Date', default: Date.now, required: true },

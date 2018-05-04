@@ -1,5 +1,5 @@
 import React, { PropTypes } from 'react';
-//import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 // Import Style
@@ -9,6 +9,7 @@ function TRcomment(props) {
   return (
     <div className={styles['single-post']}>
       <p className={styles['post-desc']}>{props.post.content}</p>
+      <p className={styles['post-desc']}>Date Added: {props.post.dateAdded}</p>
       <hr className={styles.divider} />
     </div>
   );

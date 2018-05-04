@@ -14,14 +14,14 @@ export class TeacherRatingsWidget extends Component {
     }
   }
   addPost = () => {
-    const nameRef = this.refs.name;
-    const gradingRef = this.refs.grading;
-    const teachingRef = this.refs.teaching;
-    const workloadRef = this.refs.workload;
-    const contentRef = this.refs.content;
-    if (nameRef.value && contentRef.value && gradingRef && teachingRef && workloadRef) {
-      this.props.addPost(nameRef.value, gradingRef.value, teachingRef.value, workloadRef.value, contentRef.value);
-      nameRef.value = contentRef.value =  gradingRef.value = teachingRef.value = workloadRef.value = '';
+    const { teacher } = this.props;
+    //const nameRef = this.refs.name;
+    const gradingRef = this.state.gradingValue;
+    const teachingRef = this.state.teachingValue;
+    const workloadRef = this.state.workloadValue;
+    //const contentRef = this.refs.content;
+    if (teacher && gradingRef && teachingRef && workloadRef) {
+      this.props.addPost(teacher, gradingRef, teachingRef, workloadRef);
     }
   };
   updateTextInputGrading = (event) => {
@@ -40,35 +40,29 @@ export class TeacherRatingsWidget extends Component {
   render() {
     const cls = `${styles.form} ${(this.props.showAddPost ? styles.appear : '')}`;
     return (
-          <div className="card" style={{width: '75%'}}>
-          <div style = {{paddingLeft: '10px'}}>
+          <div>
           <div className="form-group row">
-            <label htmlFor="inputEmail3" className="col-sm-2 col-form-label">Grading</label>
-            <output className="col-sm-2 col-form-label" id="textInputGrading">{this.state.gradingValue + " / 10"}</output>
+            <label htmlFor="inputEmail3" style = {{marginLeft: '15px', marginTop: '5px'}} id="textInputGrading">{"Grading   " + this.state.gradingValue + " / 10"}</label>
             <div className="col-sm-10">
               <input style={{ width: '50%' }} type="range" className="custom-range" id="customRange1" min = "0" max = "10" step = "1" defaultValue = "5" onChange={this.updateTextInputGrading}/>
             </div>
           </div>
           <div className="form-group row">
-            <label htmlFor="inputEmail3" className="col-sm-2 col-form-label">Teaching</label>
-            <output className="col-sm-2 col-form-label" id="textInputTeaching">{this.state.teachingValue + " / 10"}</output>
+            <label htmlFor="inputEmail3" style = {{marginLeft: '15px'}} id="textInputTeaching">{"Teaching   " + this.state.teachingValue + " / 10"}</label>
             <div className="col-sm-10">
               <input style={{ width: '50%' }} type="range" className="custom-range" id="customRange2" min = "0" max = "10" step = "1" defaultValue = "5" onChange={this.updateTextInputTeaching}/>
             </div>
           </div>
           <div className="form-group row">
-            <label htmlFor="inputEmail3" className="col-sm-2 col-form-label">Workload</label>
-            <output className="col-sm-2 col-form-label" id="textInputWorkload">{this.state.workloadValue + " / 10"}</output>
+            <label htmlFor="inputEmail3" style = {{marginLeft: '15px'}} id="textInputWorkload">{"Workload   " + this.state.workloadValue + " / 10"}</label>
             <div className="col-sm-10">
               <input style={{ width: '50%' }} type="range" className="custom-range" id="customRange3" min = "0" max = "10" step = "1" defaultValue = "5" onChange={this.updateTextInputWorkload}/>
             </div>
           </div>
           <div className="form-group row">
             <div className="col-sm-10">
-              <button style={{marginRight: '5px'}}type="submit" className = "btn btn-secondary">Cancel</button>
-              <button type="submit" className = "btn btn-primary">Submit</button>
+              <button type="submit" className = "btn btn-primary" onClick = {this.addPost}>Submit</button>
             </div>
-          </div>
           </div>
           </div>
         /*<form>

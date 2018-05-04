@@ -32,6 +32,7 @@ export function addPost(req, res) {
 
   // Let's sanitize inputs
   newPost.content = sanitizeHtml(newPost.content);
+  newPost.teacher = sanitizeHtml(newPost.teacher);
 
   newPost.cuid = cuid();
   newPost.save((err, saved) => {

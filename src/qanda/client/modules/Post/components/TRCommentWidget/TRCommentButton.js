@@ -5,7 +5,7 @@ function TRCommentButton(props) {
   const { onToggle } = props;
   return (
     <div>
-        <button onClick={onToggle}>Comment</button>
+        <button className="btn btn-primary" onClick={onToggle}>Comment</button>
     </div>
   );
 }

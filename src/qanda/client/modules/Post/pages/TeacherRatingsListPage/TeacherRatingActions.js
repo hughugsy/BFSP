@@ -21,7 +21,6 @@ export function addTRRequest(post) {
         grading: post.grading,
         teaching: post.teaching,
         workload: post.workload,
-        content: post.content,
       },
     }).then(res => dispatch(addTR(res.post)));
   };

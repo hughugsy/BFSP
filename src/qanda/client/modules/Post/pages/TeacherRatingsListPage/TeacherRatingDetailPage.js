@@ -37,9 +37,9 @@ class TeacherRatingDetailPage extends Component {
   };
   */
 
-  handleAddPost = (content) => {
+  handleAddPost = (content, teacher) => {
     this.props.dispatch(toggleAddTRC());
-    this.props.dispatch(addTRCOMMENTRequest({ content }));
+    this.props.dispatch(addTRCOMMENTRequest({ content, teacher }));
   };
 
   toggleAdd = () => {
@@ -53,7 +53,7 @@ class TeacherRatingDetailPage extends Component {
     );
     if (showAddTRComment) {
       pageContent = (
-        <TRcommentWidget addPost={this.handleAddPost} cancelPost={this.toggleAdd} />
+        <TRcommentWidget addPost={this.handleAddPost} teacher = {post.slug} cancelPost={this.toggleAdd} />
       );
     }
     const answerCard = (
@@ -63,7 +63,9 @@ class TeacherRatingDetailPage extends Component {
           <h3 className={styles['post-title']}>
               {post.name}
           </h3>
-          <p className={styles['post-desc']}>{post.content}</p>
+          <p>Grading: {this.props.post.grading}</p>
+          <p>Teaching: {this.props.post.teaching}</p>
+          <p>Workload: {this.props.post.workload}</p>
         </div>
       </div>
 
@@ -92,14 +94,13 @@ function mapStateToProps(state, props) {
   return {
     post: getTeacherRating(state, props.params.cuid),
     showAddTRComment: getShowAddTRCButton(state),
-    trcomments: getTRComments(state),
+    trcomments: getTRComments(state, props.params.slug),
   };
 }
 
 TeacherRatingDetailPage.propTypes = {
   post: PropTypes.shape({
     path: PropTypes.string.isRequired,
-    content: PropTypes.string.isRequired,
     slug: PropTypes.string.isRequired,
     cuid: PropTypes.string.isRequired,
   }).isRequired,
@@ -107,6 +108,7 @@ TeacherRatingDetailPage.propTypes = {
   dispatch: PropTypes.func.isRequired,
   trcomments: PropTypes.shape({
     content: PropTypes.string.isRequired,
+    teacher: PropTypes.string.isRequired,
     cuid: PropTypes.string.isRequired,
   }).isRequired,
 };

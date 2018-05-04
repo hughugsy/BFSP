@@ -1,6 +1,7 @@
 /* eslint-disable global-require */
 import React from 'react';
 import { Route, IndexRoute } from 'react-router';
+import cookie from 'react-cookie';
 import App from './modules/App/App';
 
 // require.ensure polyfill for node
@@ -22,7 +23,25 @@ if (process.env.NODE_ENV !== 'production') {
   require('./modules/Post/pages/OnlineResourceDetailPage/OnlineResourceDetailPage');
   require('./modules/Post/pages/TeacherRatingsListPage/TeacherRatingsListPage');
   require('./modules/Post/pages/TeacherRatingsListPage/TeacherRatingDetailPage');
+  require('./modules/User/pages/LoginPage/LoginPage');
+  require('./modules/User/pages/RegisterPage/RegisterPage');
+  require('./modules/User/pages/ProfilePage/ProfilePage');
 }
+
+const requireLoggedIn = (nextState, replace, cb) => {
+  const authCookie = cookie.load('mernAuth');
+  if(!authCookie || !authCookie.t) {
+    replace('/');
+  }
+  cb();
+};
+const requireNotLoggedIn = (nextState, replace, cb) => {
+  const authCookie = cookie.load('mernAuth');
+  if(authCookie && authCookie.t) {
+      replace('/');
+  }
+  cb();
+};
 
 // react-router setup with code-splitting
 // More info: http://blog.mxstbr.com/2016/01/react-apps-with-pages/
@@ -73,6 +92,34 @@ export default (
         require.ensure([], require => {
           cb(null, require('./modules/Post/pages/TeacherRatingsListPage/TeacherRatingDetailPage').default);
           });
+      }}
+    />
+    <Route 
+      path="/login"
+      onEnter={requireNotLoggedIn} 
+      getComponent={(nextState, cb) => {
+        require.ensure([], require => {
+          cb(null, require('./modules/User/pages/LoginPage/LoginPage').default);
+        });
+      }}
+    />
+    <Route 
+      path="/register"
+      onEnter={requireNotLoggedIn} 
+      getComponent={(nextState, cb) => {
+        require.ensure([], require => {
+          cb(null, require('./modules/User/pages/RegisterPage/RegisterPage').default);
+        });
+      }}
+    />
+    {/* TODO refactor above to use !requireLoggedIn and get rid of requireNotLoggedIn???*/}
+    <Route 
+      path="/profile"
+      onEnter={requireLoggedIn} 
+      getComponent={(nextState, cb) => {
+        require.ensure([], require => {
+          cb(null, require('./modules/User/pages/ProfilePage/ProfilePage').default);
+        });
       }}
     />
   </Route>
