@@ -18,6 +18,7 @@ export function addAnswerRequest(post) {
     return callApi('/answers', 'post', {
       post: {
         content: post.content,
+        question: post.question,
       },
     }).then(res => dispatch(addAnswer(res.post)));
   };

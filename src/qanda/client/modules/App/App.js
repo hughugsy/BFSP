@@ -3,17 +3,12 @@ import { Link } from 'react-router';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 
-// Import Actions
-import { toggleAddPost } from './AppActions';
 
 import Search from '../Post/components/Search/Search';
 
 
 export class App extends Component {
 
-  toggleAddPostSection = () => {
-    this.props.dispatch(toggleAddPost());
-  };
 
   render() {
     return (
@@ -52,7 +47,6 @@ export class App extends Component {
 
 App.propTypes = {
   children: PropTypes.object.isRequired,
-  dispatch: PropTypes.func.isRequired,
 };
 
 

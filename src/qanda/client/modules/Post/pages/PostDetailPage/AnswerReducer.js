@@ -28,7 +28,7 @@ const AnswerReducer = (state = initialState, action) => {
 /* Selectors */
 
 // Get all posts
-export const getAnswers = state => state.answer.data;
+export const getAnswers = (state, question) => state.answer.data.filter(post => post.question === question);
 
 // Get post by cuid
 export const getAnswer = (state, cuid) => state.answer.data.filter(post => post.cuid === cuid)[0];

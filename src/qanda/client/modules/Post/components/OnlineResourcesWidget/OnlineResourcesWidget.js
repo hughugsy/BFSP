@@ -1,87 +1,10 @@
 import React, { Component, PropTypes } from 'react';
-// import { injectIntl, intlShape, } from 'react-intl';
-// import ReactTags from 'react-tag-autocomplete';
-import Button from 'material-ui/Button';
-import { withStyles } from 'material-ui/styles';
-import TextField from 'material-ui/TextField';
-import Paper from 'material-ui/Paper';
 
-// Import Style
-import styles from './OnlineResourcesWidget.css';
-import tagStyles from './Tags.css';
-
-const materialStyles = theme => ({
-  container: {
-    display: 'flex',
-    flexWrap: 'wrap',
-  },
-  formControl: {
-    margin: theme.spacing.unit,
-  },
-  textFieldRoot: {
-    padding: 0,
-    'label + &': {
-      marginTop: theme.spacing.unit * 3,
-    },
-  },
-  titleFieldInput: {
-    borderRadius: 4,
-    backgroundColor: theme.palette.common.white,
-    border: '1px solid #ced4da',
-    fontSize: 16,
-    padding: '10px 12px',
-    width: '150px',
-    transition: theme.transitions.create(['border-color', 'box-shadow']),
-    '&:focus': {
-      borderColor: '#80bdff',
-      boxShadow: '0 0 0 0.2rem rgba(0,123,255,.25)',
-    },
-  },
-  contentFieldInput: {
-    borderRadius: 4,
-    backgroundColor: theme.palette.common.white,
-    border: '1px solid #ced4da',
-    fontSize: 16,
-    padding: '10px 12px',
-    width: '450px',
-    height: '100px',
-    transition: theme.transitions.create(['border-color', 'box-shadow']),
-    '&:focus': {
-      borderColor: '#80bdff',
-      boxShadow: '0 0 0 0.2rem rgba(0,123,255,.25)',
-    },
-  },
-  textFieldFormLabel: {
-    fontSize: 18,
-  },
-  root: theme.mixins.gutters({
-    paddingTop: 16,
-    paddingBottom: 16,
-    marginTop: theme.spacing.unit * 3,
-  }),
-});
 
 export class OnlineResourcesWidget extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      tags: [],
-      suggestions: [
-        { id: 3, name: 'CS461' },
-        { id: 4, name: 'CS421' },
-      ],
-      classNames: {
-        root: tagStyles['react-tags'],
-        rootFocused: tagStyles['react-tags.is-focused'],
-        selected: tagStyles['react-tags__selected'],
-        selectedTag: tagStyles['react-tags__selected-tag'],
-        selectedTagName: 'react-tags__selected-tag-name',
-        search: tagStyles['react-tags__search'],
-        searchInput: tagStyles['react-tags__search-input'],
-        suggestions: tagStyles['react-tags__suggestions'],
-        suggestionActive: 'is-active',
-        suggestionDisabled: 'is-disabled',
-      },
       title: '',
       content: '',
     };
@@ -125,25 +48,28 @@ export class OnlineResourcesWidget extends Component {
     const tags = [].concat(this.state.tags, tag);
     this.setState({ tags });
   }
-  /*
-  <div className={styles['form-content']}>
-    <h2 className={styles['form-title']}><FormattedMessage id="createNewPost" /></h2>
-    <input placeholder={this.props.intl.messages.postTitle} className={styles['form-field']} ref="title" />
-    <textarea placeholder={this.props.intl.messages.postContent} className={styles['form-field']} ref="content" />
-    <ReactTags
-      tags={this.state.tags} suggestions={this.state.suggestions} handleDelete={this.handleDelete}
-      handleAddition={this.handleAddition} classNames={this.state.classNames}
-    />
 
-  </div>
-  <a className={styles['post-submit-button']} href="#" onClick={this.addPost}><FormattedMessage id="submit" /></a>
-  <a className={styles['post-submit-button']} href="#" onClick={this.props.cancelPost}>Cancel</a>
-  */
   render() {
-    const cls = `${styles.form} ${(this.props.showAddPost ? styles.appear : '')}`;
-    const { classes } = this.props;
+    // const cls = `${styles.form} ${(this.props.showAddPost ? styles.appear : '')}`;
+
     return (
-      <div className={cls}>
+      <div></div>
+
+    );
+  }
+}
+
+OnlineResourcesWidget.propTypes = {
+  addPost: PropTypes.func.isRequired,
+  showAddPost: PropTypes.bool.isRequired,
+  cancelPost: PropTypes.func.isRequired,
+};
+
+export default OnlineResourcesWidget;
+
+/*
+
+<div className={cls}>
         <div className={styles['form-content']}>
           <Paper className={classes.root} elevation={4}>
             <div className={classes.container}>
@@ -186,16 +112,4 @@ export class OnlineResourcesWidget extends Component {
           </Paper>
         </div>
       </div>
-    );
-  }
-}
-
-OnlineResourcesWidget.propTypes = {
-  addPost: PropTypes.func.isRequired,
-  showAddPost: PropTypes.bool.isRequired,
-  cancelPost: PropTypes.func.isRequired,
-  classes: PropTypes.object.isRequired,
-};
-
-// export default injectIntl(OnlineResourcesWidget);
-export default withStyles(materialStyles)(OnlineResourcesWidget);
+*/
