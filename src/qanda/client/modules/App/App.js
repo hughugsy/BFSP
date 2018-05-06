@@ -58,7 +58,7 @@ export class App extends Component {
           <div style={{ position: 'relative' }}>
             <nav className="navbar navbar-expand-lg navbar-light" style={{ background: '#0084b4' }}>
               <Link className="navbar-brand" to="/" style={{ color: 'white' }} >QANDA </Link>
-
+              <Link className="navbar-brand" to="/" style={{ color: 'white', fontWeight: 'normal' }} >Home </Link>
             </nav>
           </div>
           <div style={{ position: 'absolute', top: 0, marginTop: '10px', right: 0, paddingRight: '200px' }}>

@@ -44,8 +44,7 @@ class BuyAndSellListPage extends Component {
     else {
       pageContent = (
         <div>
-          <BuyAndSellWidget addPost={this.handleAddPost} />
-          <button className="btn btn-secondary" onClick={this.handleClickCancel} style={{ marginBottom: '5px' }}>Cancel</button>
+          <BuyAndSellWidget handleClickCancel={this.handleClickCancel} addPost={this.handleAddPost} />
         </div>
       );
     }

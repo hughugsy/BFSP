@@ -74,10 +74,10 @@ export class BuyAndSellWidget extends Component {
                             { value: 'cs421', label: 'CS421' },
             ]}
           />
-          <div className="input-group mb-3">
+          <div className="input-group mb-3" style = {{marginTop: '10px'}}>
             <button type="button" className="btn btn-primary" onClick={this.addPost} style={{ marginTop: '5px' }}>Add</button>
+            <button className="btn btn-secondary" onClick = {this.props.handleClickCancel} >Cancel</button>
           </div>
-        </div>
     );
   }
 }
