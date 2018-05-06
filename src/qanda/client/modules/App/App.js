@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { Link } from 'react-router';
 import 'bootstrap/dist/css/bootstrap.min.css';
-//import './App.css';
+import './App.css';
 import { connect } from 'react-redux';
 import styles from './App.css';
 
@@ -79,7 +79,7 @@ export class App extends Component {
               <div className="list-group" role="tablist" >
                 <Link className="list-group-item list-group-item-action" role="tab" to="/">Questions</Link>
                 <Link className="list-group-item list-group-item-action" role="tab" to="/onlineresources">Online Resources</Link>
-                <Link className="list-group-item list-group-item-action" role="tab" >Tutorship</Link>
+                <Link className="list-group-item list-group-item-action" role="tab" to="/tutorship">Tutorship</Link>
                 <Link className="list-group-item list-group-item-action" role="tab" to ="/teacherratings">Teacher Ratings</Link>
                 <Link className="list-group-item list-group-item-action" role="tab" >Buy and Sell</Link>
               </div>

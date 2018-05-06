@@ -68,6 +68,7 @@ function mapStateToProps(state) {
 OnlineResourcesListPage.propTypes = {
   posts: PropTypes.arrayOf(PropTypes.shape({
     title: PropTypes.string.isRequired,
+    dateAdded: PropTypes.string.isRequired,
     content: PropTypes.string.isRequired,
   })).isRequired,
   showAddPost: PropTypes.bool.isRequired,

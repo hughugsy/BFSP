@@ -124,26 +124,7 @@ export class OnlineResourcesWidget extends Component {
     const tags = [].concat(this.state.tags, tag);
     this.setState({ tags });
   }
-  /*
-  <div className={styles['form-content']}>
-    <h2 className={styles['form-title']}><FormattedMessage id="createNewPost" /></h2>
-    <input placeholder={this.props.intl.messages.postTitle} className={styles['form-field']} ref="title" />
-    <textarea placeholder={this.props.intl.messages.postContent} className={styles['form-field']} ref="content" />
-    <ReactTags
-      tags={this.state.tags} suggestions={this.state.suggestions} handleDelete={this.handleDelete}
-      handleAddition={this.handleAddition} classNames={this.state.classNames}
-    />
-
-  </div>
-  <a className={styles['post-submit-button']} href="#" onClick={this.addPost}><FormattedMessage id="submit" /></a>
-  <a className={styles['post-submit-button']} href="#" onClick={this.props.cancelPost}>Cancel</a>
-  */
-
-
-
-
-
-
+  
 
 render() {
   const cls = `${styles.form} ${(this.props.showAddPost ? styles.appear : '')}`;
@@ -151,70 +132,53 @@ render() {
   const { selectedOption } = this.state;
 
   return (   
-<form onSubmit={this.handleSubmit} >
-  <div className="container" style={{padding: '10px', border: '1px solid #AAAAAA', width: '80%'}} >
-    <div className="panel panel-default" >
-      <div className="panel-heading">
-        <table className="table table-bordered" >
-          <thead >
-            <tr >
-              <th style={{ verticalAlign: 'middle' }}> Course </th>
-              <th style={{ width: '90%' }}><Select
-                        name="form-field-name"
-                        value={selectedOption}
-                        onChange={this.handleChange}
-                        multi={true}
-                        simpleValue={true}
-                        options={[
-                          { value: 'one', label: 'One' },
-                          { value: 'two', label: 'Two' },
-              ]}
-              />
-            </th>
-            </tr>
-          </thead>
-        </table>
-      </div>
-
-      <div className="panel-body" style={{overflow: 'hidden'}}>
-          <textarea className="form-control" rows="5" id="content" ></textarea>
-          <div style={{float: 'right'}}>
-            <button type="submit"  style={{marginTop: '5px', marginRight: '2px'}} className="btn btn-secondary" onClick={this.props.cancelPost} >CANCEL</button>         
-            <button type="submit" style={{marginTop: '5px'}} className="btn btn-primary" onClick={this.addPost}>POST</button>
+    <form onSubmit={this.handleSubmit} >
+      <div className="container" style={{padding: '10px', border: '1px solid #AAAAAA', width: '80%'}} >
+        <div className="panel panel-default" >
+          <div className="panel-heading">
+            <table className="table table-bordered" >
+              <thead >
+                <tr >
+                  <th style={{ verticalAlign: 'middle' }}> Course </th>
+                  <th style={{ width: '90%' }}>
+                            <Select
+                            name="form-field-name"
+                            value={selectedOption}
+                            onChange={this.handleChange}
+                            multi={true}
+                            simpleValue={true}
+                            options={[
+                              { value: 'CS101', label: 'CS101' },
+                              { value: 'CS102', label: 'CS102' },
+                              { value: 'CS201', label: 'CS201' },
+                              { value: 'CS202', label: 'CS202' },
+                              { value: 'CS223', label: 'CS223' },
+                              { value: 'CS224', label: 'CS224' },
+                              { value: 'CS342', label: 'CS342' },
+                              { value: 'CS353', label: 'CS353' },
+                              { value: 'CS473', label: 'CS473' },
+                              { value: 'CS476', label: 'CS476' },
+                            ]}
+                            />
+                </th>
+                </tr>
+              </thead>
+            </table>
           </div>
-      </div>
-    </div>
-  </div>     
-</form>
 
-
-
-
-  );
-
-/*
-    return (
-
-
-
-
-      <div className="container" >         
-        <div className="panel panel-default">
-          <div className="panel-body">
-
-            
-              
-            
-
+          <div className="panel-body" style={{overflow: 'hidden'}}>
+            <input type="text" onChange={this.handleTitleChange} placeholder="write your title here" style={{width: '38%',     padding: '5px 5px',  margin: '5px 0'}} />
+            <textarea  onChange={this.handleContentChange} className="form-control" rows="5" ></textarea>
+            <div style={{float: 'right'}}>
+              <button type="submit"  style={{marginTop: '5px', marginRight: '2px'}} className="btn btn-secondary" onClick={this.props.cancelPost} >CANCEL</button>         
+              <button type="submit" style={{marginTop: '5px'}} className="btn btn-primary" onClick={this.addPost}>POST</button>
+            </div>
           </div>
         </div>
-      </div>
-
-
-    );
-
-    */
-  }
+      </div>     
+    </form>
+  );
+}
 }
 
 OnlineResourcesWidget.propTypes = {

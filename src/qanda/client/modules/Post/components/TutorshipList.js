@@ -1,14 +1,14 @@
 import React, { PropTypes } from 'react';
 
 // Import Components
-import OnlineResourcesItem from './OnlineResourcesItem/OnlineResourcesItem';
+import TutorshipItem from './TutorshipItem/TutorshipItem';
 
-function OnlineResourcesList(props) {
+function TutorshipList(props) {
   return (
     <div className="listView">
       {
         props.posts.map(post => (
-          <OnlineResourcesItem
+          <TutorshipItem
             post={post}
             key={post.cuid}
           />
@@ -18,14 +18,13 @@ function OnlineResourcesList(props) {
   );
 }
 
-OnlineResourcesList.propTypes = {
+TutorshipList.propTypes = {
   posts: PropTypes.arrayOf(PropTypes.shape({
     title: PropTypes.string.isRequired,
-    dateAdded: PropTypes.string.isRequired,
     content: PropTypes.string.isRequired,
     slug: PropTypes.string.isRequired,
     cuid: PropTypes.string.isRequired,
   })).isRequired,
 };
 
-export default OnlineResourcesList;
+export default TutorshipList;
