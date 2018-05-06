@@ -12,6 +12,9 @@ export class TeacherRatingsList extends Component {
     const myPosts = [];
     for (let k = 0; k < teachers.length; k++) {
       const teacherArray = this.props.posts.filter(post => post.name === teachers[k]);
+      if (teacherArray.length === 0) {
+        continue;
+      }
       let gradingAverage = 0;
       let teachingAverage = 0;
       let workloadAverage = 0;
