@@ -61,6 +61,7 @@ export class TeacherRatingsWidget extends Component {
           </div>
           <div className="form-group row">
             <div className="col-sm-10">
+              <button style = {{marginRight: '5px'}} className="btn btn-secondary" onClick = {this.props.handleClickCancel}>Cancel</button>
               <button type="submit" className = "btn btn-primary" onClick = {this.addPost}>Submit</button>
             </div>
           </div>

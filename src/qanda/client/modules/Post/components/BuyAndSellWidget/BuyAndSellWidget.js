@@ -34,27 +34,34 @@ export class BuyAndSellWidget extends Component {
   };
   render() {
     return (
-        <div style = {{marginTop: '20px'}}>
-          <div>
-            <div className="input-group mb-3">
-              <input type="text" className="form-control" placeholder="Title" aria-describedby="basic-addon1" onChange = {this.updateTitle}/>
+        <div className="col-sm-6" style = {{marginTop: '20px', marginBottom: '20px'}}>
+          <div className="card" >
+            <div className="card-body">
+              <div>
+                <div>
+                  <div className="input-group mb-3 ">
+                    <input type="text" className="form-control" placeholder="Title" aria-describedby="basic-addon1" onChange = {this.updateTitle}/>
+                  </div>
+                </div>
+                <div>
+                  <div className="input-group mb-3">
+                    <input type="text" className="form-control" placeholder="Price" aria-describedby="basic-addon1" onChange = {this.updatePrice}/>
+                  </div>
+                </div>
+                <div>
+                  <div className="input-group mb-3">
+                    <input type="text" className="form-control" placeholder="Contact Info" aria-describedby="basic-addon1" onChange = {this.updateContact}/>
+                  </div>
+                </div>
+                <div className="input-group">
+                  <textarea className="form-control" aria-label="With textarea" placeholder = "Description" onChange = {this.updateContent}></textarea>
+                </div>
+                <div className="input-group mb-3" style = {{marginTop: '10px'}}>
+                  <button style = {{marginRight: '5px'}} type="button" className="btn btn-primary" onClick = {this.addPost} >Add</button>
+                  <button className="btn btn-secondary" onClick = {this.props.handleClickCancel} >Cancel</button>
+                </div>
+              </div>
             </div>
-          </div>
-          <div>
-            <div className="input-group mb-3">
-              <input type="text" className="form-control" placeholder="Price" aria-describedby="basic-addon1" onChange = {this.updatePrice}/>
-            </div>
-          </div>
-          <div>
-            <div className="input-group mb-3">
-              <input type="text" className="form-control" placeholder="Contact Info" aria-describedby="basic-addon1" onChange = {this.updateContact}/>
-            </div>
-          </div>
-          <div className="input-group">
-            <textarea className="form-control" aria-label="With textarea" placeholder = "Description" onChange = {this.updateContent}></textarea>
-          </div>
-          <div className="input-group mb-3">
-            <button type="button" className="btn btn-primary" onClick = {this.addPost} style = {{marginTop: '5px'}}>Add</button>
           </div>
         </div>
     );

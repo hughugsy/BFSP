@@ -29,8 +29,7 @@ class TeacherRatingsItem extends Component {
     else{
       pageContent = (
         <div>
-          <TeacherRatingsWidget addPost = {this.props.addPost} teacher={post.name } showAddPost = {true} />
-          <button className="btn btn-secondary" onClick = {this.handleClickCancel}>Cancel</button>
+          <TeacherRatingsWidget handleClickCancel = {this.handleClickCancel} addPost = {this.props.addPost} teacher={post.name } showAddPost = {true} />
         </div>
       );
     }
