@@ -28,7 +28,7 @@ const renderSearchIcon = (inputProps) => (
         position: 'absolute',
         top: '3px',
         right: '10px',
-        width: '100px',
+        width: '24px',
         height: '24px' }}
       src={SearchIcon}
     />

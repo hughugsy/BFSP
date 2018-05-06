@@ -16,15 +16,14 @@ import TRCommentList from '../../components/TRCommentList';
 // Import Actions
 import { fetchTRCOMMENTS, addTRCOMMENTRequest } from './TRCommentActions';
 import { toggleAddTRC } from './TRCButtonActions';
-import { fetchTR } from './TeacherRatingActions';
+import { fetchTR, fetchTRs } from './TeacherRatingActions';
 
 // Import Selectors
 import { getTRComments } from './TRCommentReducer';
 import { getShowAddTRCButton } from './TRCButtonReducer';
-import { getTeacherRating } from './TeacherRatingReducer';
+import { getTeacherRating, getTeacherRatings } from './TeacherRatingReducer';
 
 class TeacherRatingDetailPage extends Component {
-
   componentDidMount() {
     this.props.dispatch(fetchTRCOMMENTS());
   }
@@ -47,6 +46,29 @@ class TeacherRatingDetailPage extends Component {
   }
 
   render() {
+    let gradingAverage = 0;
+    let teachingAverage = 0;
+    let workloadAverage = 0;
+    let teacherArray = this.props.posts.filter(post => post.name === this.props.post.name);
+    for (var i = 0; i < teacherArray.length; i++){
+      gradingAverage += teacherArray[i].grading;
+      teachingAverage += teacherArray[i].teaching;
+      workloadAverage += teacherArray[i].workload;
+    }
+    gradingAverage /= teacherArray.length;
+    teachingAverage /= teacherArray.length;
+    workloadAverage /= teacherArray.length;
+    gradingAverage = gradingAverage.toFixed(1);
+    teachingAverage = teachingAverage.toFixed(1);
+    workloadAverage = workloadAverage.toFixed(1);
+
+    const grading = gradingAverage*10 + '%';
+    const gradingValue = gradingAverage*10 + '/100';
+    const teaching = teachingAverage*10 + '%';
+    const teachingValue = teachingAverage*10 + '/100';
+    const workload = workloadAverage*10 + '%';
+    const workloadValue = workloadAverage*10 + '/100';
+
     const { post, trcomments, showAddTRComment } = this.props;
     let pageContent = (
       <TRCommentButton onToggle={this.toggleAdd} />
@@ -63,9 +85,15 @@ class TeacherRatingDetailPage extends Component {
           <h3 className={styles['post-title']}>
               {post.name}
           </h3>
-          <p>Grading: {this.props.post.grading}</p>
-          <p>Teaching: {this.props.post.teaching}</p>
-          <p>Workload: {this.props.post.workload}</p>
+          <div className="progress " style = {{marginBottom: '10px', height: '20px'}}>
+            <div className="progress-bar progress-bar-striped progress-bar-animated bg-info" role="progressbar" style={{width: grading}} aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">Grading: {gradingValue}</div>
+          </div>
+          <div className="progress" style = {{marginBottom: '10px', height: '20px'}}>
+            <div className="progress-bar progress-bar-striped progress-bar-animated bg-info" role="progressbar" style={{width: teaching}} aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">Teaching: {teachingValue}</div>
+          </div>
+          <div className="progress" style = {{marginBottom: '10px', height: '20px'}}>
+            <div className="progress-bar progress-bar-striped progress-bar-animated bg-info" role="progressbar" style={{width: workload}} aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">Workload: {workloadValue}</div>
+          </div>
         </div>
       </div>
 
@@ -93,6 +121,7 @@ TeacherRatingDetailPage.need = [
 function mapStateToProps(state, props) {
   return {
     post: getTeacherRating(state, props.params.cuid),
+    posts: getTeacherRatings(state),
     showAddTRComment: getShowAddTRCButton(state),
     trcomments: getTRComments(state, props.params.slug),
   };

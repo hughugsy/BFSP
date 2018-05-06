@@ -46,14 +46,26 @@ class TeacherRatingsItem extends Component {
           {pageContent}
           <hr className={styles.divider} />
         </div>*/
+        const grading = this.props.post.grading*10 + '%';
+        const gradingValue = this.props.post.grading*10 + '/100';
+        const teaching = this.props.post.teaching*10 + '%';
+        const teachingValue = this.props.post.teaching*10 + '/100';
+        const workload = this.props.post.workload*10 + '%';
+        const workloadValue = this.props.post.workload*10 + '/100';
     return (
         <div className="card">
           {/*<img className="card-img-top" src="./emelio.jpg" alt="Card image cap"/>*/}
           <div className="card-body">
             <h5 className="card-title"><Link to={`/trcomments/${this.props.post.slug}-${this.props.post.cuid}`}>{this.props.post.name}</Link></h5>
-            <p className="card-text">Grading: {this.props.post.grading}</p>
-            <p className="card-text">Teaching: {this.props.post.teaching}</p>
-            <p className="card-text">Workload: {this.props.post.workload}</p>
+            <div className="progress " style = {{marginBottom: '10px', height: '20px'}}>
+              <div className="progress-bar progress-bar-striped progress-bar-animated bg-info" role="progressbar" style={{width: grading}} aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">Grading: {gradingValue}</div>
+            </div>
+            <div className="progress" style = {{marginBottom: '10px', height: '20px'}}>
+              <div className="progress-bar progress-bar-striped progress-bar-animated bg-info" role="progressbar" style={{width: teaching}} aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">Teaching: {teachingValue}</div>
+            </div>
+            <div className="progress" style = {{marginBottom: '10px', height: '20px'}}>
+              <div className="progress-bar progress-bar-striped progress-bar-animated bg-info" role="progressbar" style={{width: workload}} aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">Workload: {workloadValue}</div>
+            </div>
             {pageContent}
           </div>
         </div>
