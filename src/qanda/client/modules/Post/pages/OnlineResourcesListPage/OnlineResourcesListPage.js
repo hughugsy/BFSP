@@ -46,7 +46,7 @@ class OnlineResourcesListPage extends Component {
       pageContent = (<OnlineResourcesWidget addPost={this.handleAddPost} showAddPost={this.props.showAddPost} cancelPost={this.toggleAdd} />);
     }
     return (
-      <div>
+      <div style={{ marginTop: '20px' }}>
         {pageContent}
         <OnlineResourcesList handleDeletePost={this.handleDeletePost} posts={this.props.posts} />
       </div>

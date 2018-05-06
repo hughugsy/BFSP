@@ -1,13 +1,13 @@
 import React, { PropTypes, Component } from 'react';
 import { Link } from 'react-router';
-import 'bootstrap/dist/css/bootstrap.min.css';
+// import 'bootstrap/dist/css/bootstrap.min.css';
 
 class BuyAndSellItem extends Component {
-  constructor(props){
+  constructor(props) {
     super(props);
   }
-  /*<Link to={`/buyandsells/${this.props.post.slug}-${this.props.post.cuid}`}>*/
-  render(){
+  /* <Link to={`/buyandsells/${this.props.post.slug}-${this.props.post.cuid}`}>*/
+  render() {
     const { post } = this.props;
     return (
         <div className="card border-info mb-3">

@@ -1,5 +1,5 @@
 import React, { PropTypes } from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css';
+// import 'bootstrap/dist/css/bootstrap.min.css';
 // Import Components
 import BuyAndSellItem from './BuyAndSellItem/BuyAndSellItem';
 

@@ -41,7 +41,7 @@ class PostListPage extends Component {
     const { posts } = this.props;
     // const filteredPosts = posts.filter(post => selections.every((value) => post.tags.includes(value)));
     return (
-      <div>
+      <div style={{ marginTop: '20px' }}>
         <PostSheet onToggle={this.onToggle} showAddPost={this.props.showAddPost} />
         <PostCreateWidget addPost={this.handleAddPost} showAddPost={this.props.showAddPost} />
         <PostList posts={posts} />

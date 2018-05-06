@@ -16,6 +16,7 @@ export function addBSRequest(post) {
   return (dispatch) => {
     return callApi('buyandsells', 'post', {
       post: {
+        tags: post.tags,
         title: post.title,
         price: post.price,
         contact: post.contact,

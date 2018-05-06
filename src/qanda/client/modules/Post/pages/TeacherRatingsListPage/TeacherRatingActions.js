@@ -17,6 +17,7 @@ export function addTRRequest(post) {
   return (dispatch) => {
     return callApi('teacherratings', 'post', {
       post: {
+        tags: post.tags,
         name: post.name,
         grading: post.grading,
         teaching: post.teaching,

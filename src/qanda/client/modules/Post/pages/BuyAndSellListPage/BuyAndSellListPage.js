@@ -8,50 +8,50 @@ import BuyAndSellWidget from '../../components/BuyAndSellWidget/BuyAndSellWidget
 import Result from '../../components/Result/Result';
 
 // Import Actions
-import { addBSRequest, fetchBSs} from './BuyAndSellActions';
+import { addBSRequest, fetchBSs } from './BuyAndSellActions';
 
 // Import Selectors
 import { getBuyAndSells } from './BuyAndSellReducer';
 
 class BuyAndSellListPage extends Component {
-  constructor(props){
+  constructor(props) {
     super(props);
     this.state = {
       showRateForm: false,
-    }
+    };
   }
   componentDidMount() {
     this.props.dispatch(fetchBSs());
   }
 
-  handleAddPost = (title, price, contact, content) => {
-    this.props.dispatch(addBSRequest({ title, price, contact, content }));
-    this.setState({showRateForm: false});
+  handleAddPost = (tags, title, price, contact, content) => {
+    this.props.dispatch(addBSRequest({ tags, title, price, contact, content }));
+    this.setState({ showRateForm: false });
   }
 
   handleClickAddItem = () => {
-    this.setState({showRateForm: true});
+    this.setState({ showRateForm: true });
   }
-  handleClickCancel = () =>{
-    this.setState({showRateForm: false});
+  handleClickCancel = () => {
+    this.setState({ showRateForm: false });
   }
 
   render() {
     let pageContent;
-    if (!this.state.showRateForm){
-      pageContent = (<button className="btn btn-primary" onClick = {this.handleClickAddItem} style = {{marginTop: '20px',marginBottom: '5px'}}>Add Item</button>);
+    if (!this.state.showRateForm) {
+      pageContent = (<button className="btn btn-primary" onClick={this.handleClickAddItem} style={{ marginTop: '20px', marginBottom: '5px' }}>Add Item</button>);
     }
-    else{
+    else {
       pageContent = (
         <div>
-          <BuyAndSellWidget addPost = {this.handleAddPost} />
-          <button className="btn btn-secondary" onClick = {this.handleClickCancel} style = {{marginBottom: '5px'}}>Cancel</button>
+          <BuyAndSellWidget addPost={this.handleAddPost} />
+          <button className="btn btn-secondary" onClick={this.handleClickCancel} style={{ marginBottom: '5px' }}>Cancel</button>
         </div>
       );
     }
     return (
       <div>
-        { pageContent }
+        {pageContent}
         <BuyAndSellList posts={this.props.posts} />
       </div>
     );

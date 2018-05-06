@@ -7,14 +7,11 @@ import Select from 'react-select';
 import 'react-select/dist/react-select.css';
 
 import { sendSelection } from '../Post/PostActions';
-// import './App.css';
-import { connect } from 'react-redux';
-import styles from './App.css';
+
 
 // Import Actions
-import { toggleAddPost } from './AppActions';
 import { loadUserProps, logout } from '../../modules/User/UserActions';
-import { getProfileEntered } from '../../modules/User/UserReducer';
+
 
 // Import cookie
 import cookie from 'react-cookie';

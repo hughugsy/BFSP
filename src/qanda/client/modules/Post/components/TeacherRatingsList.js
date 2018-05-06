@@ -1,15 +1,15 @@
 import React, { PropTypes, Component } from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css';
+// import 'bootstrap/dist/css/bootstrap.min.css';
 // Import Components
 import TeacherRatingsItem from './TeacherRatingsItem/TeacherRatingsItem';
 
-export class TeacherRatingsList extends Component{
-  constructor(props){
+export class TeacherRatingsList extends Component {
+  constructor(props) {
     super(props);
   }
-  render(){
+  render() {
     let myPosts = [];
-    let teacherArray = this.props.posts.filter(post => post.name === "Emmelio");
+    let teacherArray = this.props.posts.filter(post => post.name === 'Emmelio');
     let gradingAverage = 0;
     let teachingAverage = 0;
     let workloadAverage = 0;
@@ -17,13 +17,13 @@ export class TeacherRatingsList extends Component{
       grading: 0,
       teaching: 0,
       workload: 0,
-      slug: "-",
-      cuid: "-",
+      slug: '-',
+      cuid: '-',
       dateAdded: Date.now,
-      path: "-",
-      name: "-",
+      path: '-',
+      name: '-',
     };
-    for (var i = 0; i < teacherArray.length; i++){
+    for (var i = 0; i < teacherArray.length; i++) {
       gradingAverage += teacherArray[i].grading;
       teachingAverage += teacherArray[i].teaching;
       workloadAverage += teacherArray[i].workload;
@@ -41,7 +41,7 @@ export class TeacherRatingsList extends Component{
     result.dateAdded = teacherArray[0].dateAdded;
     myPosts.push(result);
 
-    teacherArray = this.props.posts.filter(post => post.name === "Cicek");
+    teacherArray = this.props.posts.filter(post => post.name === 'Cicek');
     gradingAverage = 0;
     teachingAverage = 0;
     workloadAverage = 0;
@@ -49,13 +49,13 @@ export class TeacherRatingsList extends Component{
       grading: 0,
       teaching: 0,
       workload: 0,
-      slug: "-",
-      cuid: "-",
+      slug: '-',
+      cuid: '-',
       dateAdded: Date.now,
-      path: "-",
-      name: "-",
+      path: '-',
+      name: '-',
     };
-    for (var i = 0; i < teacherArray.length; i++){
+    for (var i = 0; i < teacherArray.length; i++) {
       gradingAverage += teacherArray[i].grading;
       teachingAverage += teacherArray[i].teaching;
       workloadAverage += teacherArray[i].workload;
@@ -75,11 +75,11 @@ export class TeacherRatingsList extends Component{
 
 
     return (
-      <div style = {{marginTop: "20px"}}>
+      <div style ={{ marginTop: '20px' }}>
       <div className="card-columns">
         {
           myPosts.map(post => (
-            
+
             <TeacherRatingsItem
               post={post}
               key={post.cuid}
