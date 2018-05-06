@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css';
+// import 'bootstrap/dist/css/bootstrap.min.css';
 import Select from 'react-select';
-import 'react-select/dist/react-select.css';
+// import 'react-select/dist/react-select.css';
 
 
 export class TeacherRatingsWidget extends Component {
@@ -43,6 +43,21 @@ export class TeacherRatingsWidget extends Component {
     const { selectedOption } = this.state;
     return (
           <div>
+          <Select
+            name="form-field-name"
+            value={selectedOption}
+            onChange={this.handleChange}
+            multi
+            simpleValue
+            options={[
+                            { value: 'cs101', label: 'CS101' },
+                            { value: 'cs102', label: 'CS102' },
+                            { value: 'cs201', label: 'CS201' },
+                            { value: 'cs202', label: 'CS202' },
+                            { value: 'cs319', label: 'CS319' },
+                            { value: 'cs421', label: 'CS421' },
+            ]}
+          />
           <div className="form-group row">
             <label htmlFor="inputEmail3" style={{ marginLeft: '15px', marginTop: '5px' }} id="textInputGrading">{'Grading   ' + this.state.gradingValue + ' / 10'}</label>
             <div className="col-sm-10">
@@ -66,21 +81,7 @@ export class TeacherRatingsWidget extends Component {
               <button type="submit" className="btn btn-primary" onClick={this.addPost}>Submit</button>
             </div>
           </div>
-          <Select
-            name="form-field-name"
-            value={selectedOption}
-            onChange={this.handleChange}
-            multi
-            simpleValue
-            options={[
-                            { value: 'cs101', label: 'CS101' },
-                            { value: 'cs102', label: 'CS102' },
-                            { value: 'cs201', label: 'CS201' },
-                            { value: 'cs202', label: 'CS202' },
-                            { value: 'cs319', label: 'CS319' },
-                            { value: 'cs421', label: 'CS421' },
-            ]}
-          />
+
           </div>
 
 

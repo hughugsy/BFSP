@@ -8,14 +8,14 @@ export class TeacherRatingsList extends Component {
     super(props);
   }
   render() {
-    let teachers = ['Emmelio', 'Cicek'];
-    let myPosts = [];
-    for (var k = 0; k < teachers.length; k++) {
-      let teacherArray = this.props.posts.filter(post => post.name === teachers[k]);
+    const teachers = ['Ercument Cicek'];
+    const myPosts = [];
+    for (let k = 0; k < teachers.length; k++) {
+      const teacherArray = this.props.posts.filter(post => post.name === teachers[k]);
       let gradingAverage = 0;
       let teachingAverage = 0;
       let workloadAverage = 0;
-      let result = {
+      const result = {
         grading: 0,
         teaching: 0,
         workload: 0,
@@ -25,7 +25,7 @@ export class TeacherRatingsList extends Component {
         path: '-',
         name: '-',
       };
-      for (var i = 0; i < teacherArray.length; i++) {
+      for (let i = 0; i < teacherArray.length; i++) {
         gradingAverage += teacherArray[i].grading;
         teachingAverage += teacherArray[i].teaching;
         workloadAverage += teacherArray[i].workload;

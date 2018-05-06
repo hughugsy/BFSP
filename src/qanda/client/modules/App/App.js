@@ -1,10 +1,10 @@
 import React, { Component, PropTypes } from 'react';
 import { Link } from 'react-router';
 import { connect } from 'react-redux';
-import 'bootstrap/dist/css/bootstrap.min.css';
+// import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 import Select from 'react-select';
-import 'react-select/dist/react-select.css';
+// import 'react-select/dist/react-select.css';
 
 import { sendSelection } from '../Post/PostActions';
 
@@ -100,21 +100,26 @@ export class App extends Component {
                 <Link className="list-group-item list-group-item-action" role="tab" to="/teacherratings">Teacher Ratings</Link>
                 <Link className="list-group-item list-group-item-action" role="tab" to="/buyandsells">Buy and Sell</Link>
               </div>
-              <Select
-                name="form-field-name"
-                value={selectedOption}
-                onChange={this.handleChange}
-                multi
-                simpleValue
-                options={[
-                            { value: 'cs101', label: 'CS101' },
-                            { value: 'cs102', label: 'CS102' },
-                            { value: 'cs201', label: 'CS201' },
-                            { value: 'cs202', label: 'CS202' },
-                            { value: 'cs319', label: 'CS319' },
-                            { value: 'cs421', label: 'CS421' },
-                ]}
-              />
+              <div style={{ marginTop: '20px' }} className="card">
+                <div className="card-body">
+                  <h6 className="card-title">Filter By Tags</h6>
+                  <Select
+                    name="form-field-name"
+                    value={selectedOption}
+                    onChange={this.handleChange}
+                    multi
+                    simpleValue
+                    options={[
+                                { value: 'cs101', label: 'CS101' },
+                                { value: 'cs102', label: 'CS102' },
+                                { value: 'cs201', label: 'CS201' },
+                                { value: 'cs202', label: 'CS202' },
+                                { value: 'cs319', label: 'CS319' },
+                                { value: 'cs421', label: 'CS421' },
+                    ]}
+                  />
+                </div>
+              </div>
             </div>
             <div className="col-8">
               {this.props.children}

@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css';
+// import 'bootstrap/dist/css/bootstrap.min.css';
 import Select from 'react-select';
-import 'react-select/dist/react-select.css';
+// import 'react-select/dist/react-select.css';
 
 export class BuyAndSellWidget extends Component {
   constructor(props) {
@@ -59,9 +59,6 @@ export class BuyAndSellWidget extends Component {
           <div className="input-group">
             <textarea className="form-control" aria-label="With textarea" placeholder="Description" onChange={this.updateContent}></textarea>
           </div>
-          <div className="input-group mb-3">
-            <button type="button" className="btn btn-primary" onClick={this.addPost} style={{ marginTop: '5px' }}>Add</button>
-          </div>
           <Select
             name="form-field-name"
             value={selectedOption}
@@ -77,6 +74,9 @@ export class BuyAndSellWidget extends Component {
                             { value: 'cs421', label: 'CS421' },
             ]}
           />
+          <div className="input-group mb-3">
+            <button type="button" className="btn btn-primary" onClick={this.addPost} style={{ marginTop: '5px' }}>Add</button>
+          </div>
         </div>
     );
   }

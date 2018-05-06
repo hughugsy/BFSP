@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import Select from 'react-select';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import 'react-select/dist/react-select.css';
+// import 'bootstrap/dist/css/bootstrap.min.css';
+// import 'react-select/dist/react-select.css';
 
 // Import Style
 import styles from './PostCreateWidget.css';
