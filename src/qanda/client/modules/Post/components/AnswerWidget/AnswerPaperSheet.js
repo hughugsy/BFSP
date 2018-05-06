@@ -1,11 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import 'bootstrap/dist/css/bootstrap.min.css';
-
+// import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 function AnswerPaperSheet(props) {
-  const {onToggle } = props;
+  const { onToggle } = props;
   return (
     <div className="accordion">
           <button type="submit" className="btn btn-primary" onClick={onToggle}>ANSWER</button>

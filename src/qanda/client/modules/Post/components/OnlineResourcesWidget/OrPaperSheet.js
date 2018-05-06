@@ -1,8 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import 'bootstrap/dist/css/bootstrap.min.css';
-
-
+// import 'bootstrap/dist/css/bootstrap.min.css';
+import './OnlineResourcesWidget.css';
 
 
 function OrPaperSheet(props) {

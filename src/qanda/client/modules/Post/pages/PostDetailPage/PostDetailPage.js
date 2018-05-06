@@ -1,8 +1,7 @@
 import React, { PropTypes, Component } from 'react';
 import { connect } from 'react-redux';
 import Helmet from 'react-helmet';
-import { Link } from 'react-router';
-// import { FormattedMessage } from 'react-intl';
+// import 'bootstrap/dist/css/bootstrap.min.css';
 
 // Import Style
 import styles from '../../components/PostListItem/PostListItem.css';
@@ -36,6 +35,8 @@ class PostDetailPage extends Component {
   };
   */
 
+  // /////////////!!!!!!!!!!!!!!!!!!!!!!!!!!! ADD PATH TO EVERY MODEL!!!!!!!!!!!FOR ALGOLIA
+
   handleAddPost = (content, question) => {
     this.props.dispatch(toggleAddAnswer());
     this.props.dispatch(addAnswerRequest({ content, question }));
@@ -47,12 +48,13 @@ class PostDetailPage extends Component {
 
   render() {
     const { post, answers, showAddAnswer } = this.props;
+    const question = post.slug;
     let pageContent = (
       <AnswerPaperSheet onToggle={this.toggleAdd} />
     );
     if (showAddAnswer) {
       pageContent = (
-        <AnswerWidget addPost={this.handleAddPost} question={post.cuid} cancelPost={this.toggleAdd} />
+        <AnswerWidget addPost={this.handleAddPost} question={question} cancelPost={this.toggleAdd} />
       );
     }
     const answerCard = (
@@ -60,9 +62,7 @@ class PostDetailPage extends Component {
         <Helmet title={post.title} />
         <div className={`${styles['single-post']} ${styles['post-detail']}`}>
           <h3 className={styles['post-title']}>
-            <Link to={`/posts/${post.slug}-${post.cuid}`} >
               {post.title}
-            </Link>
           </h3>
           <p className={styles['post-desc']}>{post.content}</p>
         </div>
@@ -93,7 +93,7 @@ function mapStateToProps(state, props) {
   return {
     post: getPost(state, props.params.cuid),
     showAddAnswer: getShowAddAnswer(state),
-    answers: getAnswers(state),
+    answers: getAnswers(state, props.params.slug),
   };
 }
 
@@ -107,6 +107,7 @@ PostDetailPage.propTypes = {
   showAddAnswer: PropTypes.bool.isRequired,
   dispatch: PropTypes.func.isRequired,
   answers: PropTypes.shape({
+    question: PropTypes.string.isRequired,
     content: PropTypes.string.isRequired,
     cuid: PropTypes.string.isRequired,
   }).isRequired,

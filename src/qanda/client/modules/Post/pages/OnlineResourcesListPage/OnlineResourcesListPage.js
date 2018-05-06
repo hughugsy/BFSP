@@ -28,9 +28,9 @@ class OnlineResourcesListPage extends Component {
     }
   };
 
-  handleAddPost = (title, content) => {
+  handleAddPost = (tags, title, content) => {
     this.props.dispatch(toggleAddOnRes());
-    this.props.dispatch(addOnResRequest({ title, content }));
+    this.props.dispatch(addOnResRequest({ tags, title, content }));
   };
 
   toggleAdd = () => {
@@ -46,7 +46,7 @@ class OnlineResourcesListPage extends Component {
       pageContent = (<OnlineResourcesWidget addPost={this.handleAddPost} showAddPost={this.props.showAddPost} cancelPost={this.toggleAdd} />);
     }
     return (
-      <div>
+      <div style={{ marginTop: '20px' }}>
         {pageContent}
         <OnlineResourcesList handleDeletePost={this.handleDeletePost} posts={this.props.posts} />
       </div>
@@ -67,6 +67,7 @@ function mapStateToProps(state) {
 
 OnlineResourcesListPage.propTypes = {
   posts: PropTypes.arrayOf(PropTypes.shape({
+    tags: PropTypes.arrayOf(PropTypes.string).isRequired,
     title: PropTypes.string.isRequired,
     dateAdded: PropTypes.string.isRequired,
     content: PropTypes.string.isRequired,

@@ -2,7 +2,7 @@ import React from 'react';
 import { InstantSearch, Configure } from 'react-instantsearch/dom';
 import { connectAutoComplete } from 'react-instantsearch/connectors';
 import Autosuggest from 'react-autosuggest';
-import 'bootstrap/dist/css/bootstrap.min.css';
+// import 'bootstrap/dist/css/bootstrap.min.css';
 import theme from './theme.css';
 import SearchIcon from './search.png';
 import { Link } from 'react-router';

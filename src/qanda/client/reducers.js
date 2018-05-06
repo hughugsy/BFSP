@@ -15,6 +15,7 @@ import answer from './modules/Post/pages/PostDetailPage/AnswerReducer';
 import answerbutton from './modules/Post/pages/PostDetailPage/AnswerButtonReducer';
 import trcomment from './modules/Post/pages/TeacherRatingsListPage/TRCommentReducer';
 import trcbutton from './modules/Post/pages/TeacherRatingsListPage/TRCButtonReducer';
+import buyandsells from './modules/Post/pages/BuyAndSellListPage/BuyAndSellReducer';
 import user from './modules/User/UserReducer';
 import tutorship from './modules/Post/pages/TutorshipListPage/TutorshipReducer';
 import tutorshipbutton from './modules/Post/pages/TutorshipListPage/TutorshipButtonReducer';
@@ -33,5 +34,6 @@ export default combineReducers({
   trcbutton,
   user,
   tutorship,
-  tutorshipbutton
+  tutorshipbutton,
+  buyandsells,
 });

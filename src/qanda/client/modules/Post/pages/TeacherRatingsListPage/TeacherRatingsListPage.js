@@ -24,16 +24,16 @@ class TeacherRatingsListPage extends Component {
     }
   };
 
-  handleAddPost = (name, grading, teaching, workload, content) => {
+  handleAddPost = (tags, name, grading, teaching, workload) => {
     this.props.dispatch(toggleAddTR());
-    this.props.dispatch(addTRRequest({ name, grading, teaching, workload}));
+    this.props.dispatch(addTRRequest({ tags, name, grading, teaching, workload }));
   };
 
   render() {
     return (
       <div>
-        {/*<TeacherRatingsWidget addPost={this.handleAddPost} showAddPost={true/*this.props.showAddPost} />*/}
-        <TeacherRatingsList handleDeletePost={this.handleDeletePost} posts={this.props.posts} addPost = {this.handleAddPost}/>
+        {/* <TeacherRatingsWidget addPost={this.handleAddPost} showAddPost={true/*this.props.showAddPost} />*/}
+        <TeacherRatingsList handleDeletePost={this.handleDeletePost} posts={this.props.posts} addPost ={this.handleAddPost} />
       </div>
     );
   }

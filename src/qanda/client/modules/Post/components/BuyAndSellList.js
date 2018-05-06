@@ -1,14 +1,14 @@
 import React, { PropTypes } from 'react';
-
+// import 'bootstrap/dist/css/bootstrap.min.css';
 // Import Components
-import OnlineResourcesItem from './OnlineResourcesItem/OnlineResourcesItem';
+import BuyAndSellItem from './BuyAndSellItem/BuyAndSellItem';
 
-function OnlineResourcesList(props) {
+function BuyAndSellList(props) {
   return (
-    <div className="listView">
+    <div className="card-columns">
       {
         props.posts.map(post => (
-          <OnlineResourcesItem
+          <BuyAndSellItem
             post={post}
             key={post.cuid}
           />
@@ -18,15 +18,15 @@ function OnlineResourcesList(props) {
   );
 }
 
-OnlineResourcesList.propTypes = {
+BuyAndSellList.propTypes = {
   posts: PropTypes.arrayOf(PropTypes.shape({
-    tags: PropTypes.arrayOf(PropTypes.string).isRequired,
     title: PropTypes.string.isRequired,
-    dateAdded: PropTypes.string.isRequired,
+    contact: PropTypes.string.isRequired,
+    price: PropTypes.number.isRequired,
     content: PropTypes.string.isRequired,
     slug: PropTypes.string.isRequired,
     cuid: PropTypes.string.isRequired,
   })).isRequired,
 };
 
-export default OnlineResourcesList;
+export default BuyAndSellList;

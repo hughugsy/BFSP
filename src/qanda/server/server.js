@@ -44,6 +44,7 @@ import { fetchComponentData } from './util/fetchData';
 import posts from './routes/post.routes';
 import onlineresources from './routes/onlineresource.routes';
 import teacherratings from './routes/teacherrating.routes';
+import buyandsells from './routes/buyandsell.routes';
 import trcomments from './routes/trcomment.routes';
 import answers from './routes/answer.routes';
 import dummyData from './dummyData';
@@ -76,6 +77,7 @@ app.use('/api', teacherratings);
 app.use('/api', answers);
 app.use('/api', tutorship);
 app.use('/api', trcomments);
+app.use('/api', buyandsells);
 
 // Render Initial HTML
 const renderFullPage = (html, initialState) => {
@@ -96,12 +98,14 @@ const renderFullPage = (html, initialState) => {
         ${head.script.toString()}
 
         ${isProdMode ? `<link rel='stylesheet' href='${assetsManifest['/app.css']}' />` : ''}
+        <link rel="stylesheet" href="https://unpkg.com/react-select@1.2.1/dist/react-select.css">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/instantsearch.css@7.0.0/themes/algolia-min.css">
         <link href='https://fonts.googleapis.com/css?family=Lato:400,300,700' rel='stylesheet' type='text/css'/>
         <link rel="shortcut icon" href="http://res.cloudinary.com/hashnode/image/upload/v1455629445/static_imgs/mern/mern-favicon-circle-fill.png" type="image/png" />
       </head>
       <body>
-        <div id="root">${html}</div>
+      <div id="root">${process.env.NODE_ENV === 'production' ? html : `<div>${html}</div>`}</div>
         <script>
           window.__INITIAL_STATE__ = ${JSON.stringify(initialState)};
           ${isProdMode ?
