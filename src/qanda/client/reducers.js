@@ -15,6 +15,7 @@ import answer from './modules/Post/pages/PostDetailPage/AnswerReducer';
 import answerbutton from './modules/Post/pages/PostDetailPage/AnswerButtonReducer';
 import trcomment from './modules/Post/pages/TeacherRatingsListPage/TRCommentReducer';
 import trcbutton from './modules/Post/pages/TeacherRatingsListPage/TRCButtonReducer';
+import buyandsells from './modules/Post/pages/BuyAndSellListPage/BuyAndSellReducer';
 import user from './modules/User/UserReducer';
 // Combine all reducers into one root reducer
 export default combineReducers({
@@ -30,4 +31,5 @@ export default combineReducers({
   trcomment,
   trcbutton,
   user,
+  buyandsells,
 });

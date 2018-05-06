@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css';
+//import 'bootstrap/dist/css/bootstrap.min.css';
 
 // Import Style
 import styles from './TeacherRatingsWidget.css';

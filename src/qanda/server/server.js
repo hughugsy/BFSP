@@ -44,6 +44,7 @@ import { fetchComponentData } from './util/fetchData';
 import posts from './routes/post.routes';
 import onlineresources from './routes/onlineresource.routes';
 import teacherratings from './routes/teacherrating.routes';
+import buyandsells from './routes/buyandsell.routes';
 import trcomments from './routes/trcomment.routes';
 import answers from './routes/answer.routes';
 import dummyData from './dummyData';
@@ -76,6 +77,7 @@ app.use('/api', teacherratings);
 app.use('/api', answers);
 app.use('/api', tutorship);
 app.use('/api', trcomments);
+app.use('/api', buyandsells);
 
 // Render Initial HTML
 const renderFullPage = (html, initialState) => {

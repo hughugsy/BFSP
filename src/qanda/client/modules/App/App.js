@@ -81,13 +81,13 @@ export class App extends Component {
                 <Link className="list-group-item list-group-item-action" role="tab" to="/onlineresources">Online Resources</Link>
                 <Link className="list-group-item list-group-item-action" role="tab" >Tutorship</Link>
                 <Link className="list-group-item list-group-item-action" role="tab" to ="/teacherratings">Teacher Ratings</Link>
-                <Link className="list-group-item list-group-item-action" role="tab" >Buy and Sell</Link>
+                <Link className="list-group-item list-group-item-action" role="tab" to = "/buyandsells">Buy and Sell</Link>
               </div>
             </div>
             <div className="col-8">
               {this.props.children}
             </div>
-            <div className="col-2" style={{ top: '10px' }}>
+            <div className="col-2" style={{ top: '20px' }}>
               <div class="list-group">
                 <a href="#" className="list-group-item list-group-item-action">Announcements</a>
                 <a href="https://news.sportbox.ru/" className="list-group-item list-group-item-action list-group-item-primary">SPORT NEWS</a>

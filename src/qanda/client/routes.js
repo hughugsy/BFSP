@@ -22,6 +22,8 @@ if (process.env.NODE_ENV !== 'production') {
   require('./modules/Post/pages/OnlineResourcesListPage/OnlineResourcesListPage');
   require('./modules/Post/pages/OnlineResourceDetailPage/OnlineResourceDetailPage');
   require('./modules/Post/pages/TeacherRatingsListPage/TeacherRatingsListPage');
+  require('./modules/Post/pages/BuyAndSellListPage/BuyAndSellListPage');
+  require('./modules/Post/pages/BuyAndSellListPage/BuyAndSellDetailPage');
   require('./modules/Post/pages/TeacherRatingsListPage/TeacherRatingDetailPage');
   require('./modules/User/pages/LoginPage/LoginPage');
   require('./modules/User/pages/RegisterPage/RegisterPage');
@@ -119,6 +121,22 @@ export default (
       getComponent={(nextState, cb) => {
         require.ensure([], require => {
           cb(null, require('./modules/User/pages/ProfilePage/ProfilePage').default);
+        });
+      }}
+    />
+    <Route
+      path="/buyandsells"
+      getComponent={(nextState, cb) => {
+        require.ensure([], require => {
+          cb(null, require('./modules/Post/pages/BuyAndSellListPage/BuyAndSellListPage').default);
+        });
+      }}
+    />
+    <Route
+      path="/buyandsell/:slug-:cuid"
+      getComponent={(nextState, cb) => {
+        require.ensure([], require => {
+          cb(null, require('./modules/Post/pages/BuyAndSellListPage/BuyAndSellDetailPage').default);
         });
       }}
     />
