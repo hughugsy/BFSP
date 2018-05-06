@@ -21,6 +21,7 @@ function OnlineResourcesItem(props) {
 
 OnlineResourcesItem.propTypes = {
   post: PropTypes.shape({
+    tags: PropTypes.arrayOf(PropTypes.string).isRequired,
     title: PropTypes.string.isRequired,
     content: PropTypes.string.isRequired,
     slug: PropTypes.string.isRequired,

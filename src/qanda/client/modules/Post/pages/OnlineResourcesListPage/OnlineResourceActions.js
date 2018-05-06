@@ -17,6 +17,7 @@ export function addOnResRequest(post) {
   return (dispatch) => {
     return callApi('onlineresources', 'post', {
       post: {
+        tags: post.tags,
         title: post.title,
         content: post.content,
       },

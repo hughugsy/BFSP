@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css';
+// import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 export class AnswerWidget extends Component {
@@ -26,8 +26,6 @@ export class AnswerWidget extends Component {
   }
 
   render() {
-    // const cls = `${styles.form} ${(this.props.showAddPost ? styles.appear : '')}`;
-    // const { classes } = this.props;
     return (
       <form onSubmit={this.handleSubmit} >
         <div className="container" style={{ padding: '10px', border: '1px solid #AAAAAA', width: '80%' }} >
@@ -51,7 +49,6 @@ export class AnswerWidget extends Component {
 
 AnswerWidget.propTypes = {
   addPost: PropTypes.func.isRequired,
-  // showAddPost: PropTypes.bool.isRequired,
   cancelPost: PropTypes.func.isRequired,
   question: PropTypes.string.isRequired,
 };

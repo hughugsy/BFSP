@@ -2,7 +2,7 @@ import mongoose from 'mongoose';
 const Schema = mongoose.Schema;
 
 const postSchema = new Schema({
-  name: { type: 'String', required: true },
+  tags: [],
   title: { type: 'String', required: true },
   content: { type: 'String', required: true },
   slug: { type: 'String', required: true },

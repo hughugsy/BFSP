@@ -4,6 +4,7 @@ import callApi from '../../util/apiCaller';
 export const ADD_POST = 'ADD_POST';
 export const ADD_POSTS = 'ADD_POSTS';
 export const DELETE_POST = 'DELETE_POST';
+export const SEND_SELECTION = 'SEND_SELECTION';
 
 // Export Actions
 export function addPost(post) {
@@ -17,7 +18,7 @@ export function addPostRequest(post) {
   return (dispatch) => {
     return callApi('posts', 'post', {
       post: {
-        name: post.name,
+        tags: post.tags,
         title: post.title,
         content: post.content,
       },
@@ -56,5 +57,11 @@ export function deletePost(cuid) {
 export function deletePostRequest(cuid) {
   return (dispatch) => {
     return callApi(`posts/${cuid}`, 'delete').then(() => dispatch(deletePost(cuid)));
+  };
+}
+export function sendSelection(selection) {
+  return {
+    type: SEND_SELECTION,
+    selection,
   };
 }
