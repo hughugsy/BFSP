@@ -6,15 +6,11 @@ import styles from './PostListItem.css';
 
 function PostListItem(props) {
   return (
-    <div className={styles['single-post']}>
-      <h3 className={styles['post-title']}>
-        <Link to={`/posts/${props.post.slug}-${props.post.cuid}`} >
-          {props.post.title}
-        </Link>
-      </h3>
-      {/* <p className={styles['author-name']}><FormattedMessage id="by" /> {props.post.name}</p>*/}
-      <p className={styles['post-desc']}>{props.post.content}</p>
-      <hr className={styles.divider} />
+    <div className="card" style={{marginTop: '16px'}} >
+      <h6 className="card-header"><Link to={`/posts/${props.post.slug}-${props.post.cuid}`} >   {props.post.title} </Link>  <div style={{float: 'right', fontSize: '12px'}}> {props.post.dateAdded.substring(0,10)}</div> </h6>
+      <div className="card-body">
+        <p className="card-text">{props.post.content}</p>
+      </div>
     </div>
   );
 }
@@ -24,9 +20,11 @@ PostListItem.propTypes = {
     tags: PropTypes.arrayOf(PropTypes.string).isRequired,
     title: PropTypes.string.isRequired,
     content: PropTypes.string.isRequired,
+    dateAdded: PropTypes.string.isRequired,
     slug: PropTypes.string.isRequired,
     cuid: PropTypes.string.isRequired,
   }).isRequired,
 };
 
 export default PostListItem;
+

@@ -1,17 +1,14 @@
 import React, { PropTypes } from 'react';
 
 // Import Components
-import TRComment from './TRComment/TRComment';
+import TutorshipItem from './TutorshipItem/TutorshipItem';
 
-function TRCommentList(props) {
+function TutorshipList(props) {
   return (
-    <div className="card" style = {{marginTop: '20px', marginLeft: '15px'}}>
-      <div className="card-header">
-        Comment Section
-      </div>
+    <div className="card-columns">
       {
         props.posts.map(post => (
-          <TRComment
+          <TutorshipItem
             post={post}
             key={post.cuid}
           />
@@ -21,11 +18,14 @@ function TRCommentList(props) {
   );
 }
 
-TRCommentList.propTypes = {
+TutorshipList.propTypes = {
   posts: PropTypes.arrayOf(PropTypes.shape({
+    title: PropTypes.string.isRequired,
+    type: PropTypes.string.isRequired,
     content: PropTypes.string.isRequired,
+    slug: PropTypes.string.isRequired,
     cuid: PropTypes.string.isRequired,
   })).isRequired,
 };
 
-export default TRCommentList;
+export default TutorshipList;

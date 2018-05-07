@@ -38,8 +38,8 @@ export class AnswerWidget extends Component {
               <div style={{ float: 'right' }}>
                 <button type="submit" className="btn btn-secondary" onClick={this.props.cancelPost} style={{ marginRight: '3px', marginTop: '5px' }}>CANCEL</button>
                 <button type="submit" className="btn btn-primary" onClick={this.addPost} style={{ marginTop: '5px' }} >POST</button>
-              </div >
-            </div >
+              </div>
+            </div>
           </div>
         </div>
       </form>

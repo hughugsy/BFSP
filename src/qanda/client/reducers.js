@@ -17,6 +17,8 @@ import trcomment from './modules/Post/pages/TeacherRatingsListPage/TRCommentRedu
 import trcbutton from './modules/Post/pages/TeacherRatingsListPage/TRCButtonReducer';
 import buyandsells from './modules/Post/pages/BuyAndSellListPage/BuyAndSellReducer';
 import user from './modules/User/UserReducer';
+import tutorship from './modules/Post/pages/TutorshipListPage/TutorshipReducer';
+import tutorshipbutton from './modules/Post/pages/TutorshipListPage/TutorshipButtonReducer';
 // Combine all reducers into one root reducer
 export default combineReducers({
   app,
@@ -31,5 +33,7 @@ export default combineReducers({
   trcomment,
   trcbutton,
   user,
+  tutorship,
+  tutorshipbutton,
   buyandsells,
 });

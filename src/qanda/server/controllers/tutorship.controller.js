@@ -2,6 +2,7 @@ import Tutorship from '../models/tutorship';
 import cuid from 'cuid';
 import slug from 'limax';
 import sanitizeHtml from 'sanitize-html';
+import algoliasearch from 'algoliasearch';
 
 /**
  * Get all posts
@@ -29,11 +30,32 @@ export function addTutorshipItem(req, res) {
     res.status(403).end();
   }
 
+  const client = algoliasearch('VJQN417WCB', 'f34396b9a1013200b2e1ea8ec39d00e8');
+  const trackingsIndex = client.initIndex('posts');
+  const id = cuid();
+  const obj = {
+    path: 'tutorship',
+    title: req.body.post.title,
+    content: req.body.post.content,
+    type: req.body.post.type,
+    slug: slug(req.body.post.title.toLowerCase(), { lowercase: true }),
+    cuid: id,
+  };
+
+  trackingsIndex.addObject(obj, (error, content) => {
+    if (error) {
+      console.log(error);
+    } else {
+      console.log('successfully indexed ', content);
+    }
+  });
+
   const newPost = new Tutorship(req.body.post);
 
   // Let's sanitize inputs
   newPost.title = sanitizeHtml(newPost.title);
   newPost.content = sanitizeHtml(newPost.content);
+  newPost.type = sanitizeHtml(newPost.type);
 
   newPost.slug = slug(newPost.title.toLowerCase(), { lowercase: true });
   newPost.cuid = cuid();

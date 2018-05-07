@@ -11,7 +11,7 @@ function PostSheet(props) {
             <table className="table table-bordered" style={{ width: '80%' }}>
                 <thead >
                 <tr >
-                    <th style={{ verticalAlign: 'middle' }}> Are you looking for online resources? or Do you want to share?</th>
+                    <th style={{ verticalAlign: 'middle' }}> Are you looking for online answers? just post here if you did not find</th>
                     <th ><button type="submit" className="btn btn-primary" onClick={onToggle}>POST</button></th>
                 </tr>
                 </thead>

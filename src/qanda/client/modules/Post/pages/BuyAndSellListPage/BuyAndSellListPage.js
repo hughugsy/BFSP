@@ -12,6 +12,7 @@ import { addBSRequest, fetchBSs } from './BuyAndSellActions';
 
 // Import Selectors
 import { getBuyAndSells } from './BuyAndSellReducer';
+import { getUser } from '../../../User/UserReducer';
 
 class BuyAndSellListPage extends Component {
   constructor(props) {
@@ -38,18 +39,22 @@ class BuyAndSellListPage extends Component {
 
   render() {
     let pageContent;
+    if (!this.props.user)
+      pageContent = null;
+    else{
     if (!this.state.showRateForm) {
-      pageContent = (<button className="btn btn-primary" onClick={this.handleClickAddItem} style={{ marginTop: '20px', marginBottom: '5px' }}>Add Item</button>);
+      pageContent = (<button className="btn btn-primary" onClick={this.handleClickAddItem} style={{marginBottom: '5px' }}>Add Item</button>);
     }
     else {
-      pageContent = (
-        <div>
-          <BuyAndSellWidget handleClickCancel={this.handleClickCancel} addPost={this.handleAddPost} />
-        </div>
-      );
+        pageContent = (
+          <div>
+            <BuyAndSellWidget handleClickCancel={this.handleClickCancel} addPost={this.handleAddPost} />
+          </div>
+        );
+      }
     }
     return (
-      <div>
+      <div style={{marginTop: '20px'}}>
         {pageContent}
         <BuyAndSellList posts={this.props.posts} />
       </div>
@@ -64,6 +69,7 @@ BuyAndSellListPage.need = [() => { return fetchBSs(); }];
 function mapStateToProps(state) {
   return {
     posts: getBuyAndSells(state),
+    user: getUser(state),
   };
 }
 

@@ -37,6 +37,7 @@ export function addOnlineResource(req, res) {
     path: 'onlineresources',
     title: req.body.post.title,
     content: req.body.post.content,
+    link: req.body.post.link,
     slug: slug(req.body.post.title.toLowerCase(), { lowercase: true }),
     cuid: id,
   };
@@ -54,6 +55,7 @@ export function addOnlineResource(req, res) {
   // Let's sanitize inputs
   newPost.title = sanitizeHtml(newPost.title);
   newPost.content = sanitizeHtml(newPost.content);
+  newPost.link = sanitizeHtml(newPost.link);
 
   newPost.slug = slug(newPost.title.toLowerCase(), { lowercase: true });
   newPost.cuid = id;

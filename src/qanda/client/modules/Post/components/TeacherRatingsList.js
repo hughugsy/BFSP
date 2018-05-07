@@ -8,7 +8,7 @@ export class TeacherRatingsList extends Component {
     super(props);
   }
   render() {
-    const teachers = ['Ercument Cicek'];
+    const teachers = ['Emmelio', 'Cicek'];
     const myPosts = [];
     for (let k = 0; k < teachers.length; k++) {
       const teacherArray = this.props.posts.filter(post => post.name === teachers[k]);
@@ -56,6 +56,7 @@ export class TeacherRatingsList extends Component {
               post={post}
               key={post.cuid}
               addPost={this.props.addPost}
+              showRate = {this.props.showRate}
             />
           ))
         }

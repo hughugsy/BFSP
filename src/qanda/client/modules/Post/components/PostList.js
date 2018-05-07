@@ -5,7 +5,7 @@ import PostListItem from './PostListItem/PostListItem';
 
 function PostList(props) {
   return (
-    <div className="listView">
+    <div >
       {
         props.posts.map(post => (
           <PostListItem
@@ -23,6 +23,7 @@ PostList.propTypes = {
     tags: PropTypes.arrayOf(PropTypes.string).isRequired,
     title: PropTypes.string.isRequired,
     content: PropTypes.string.isRequired,
+    dateAdded: PropTypes.string.isRequired,
     slug: PropTypes.string.isRequired,
     cuid: PropTypes.string.isRequired,
   })).isRequired,

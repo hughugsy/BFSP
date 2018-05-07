@@ -21,6 +21,8 @@ if (process.env.NODE_ENV !== 'production') {
   require('./modules/Post/pages/PostDetailPage/PostDetailPage');
   require('./modules/Post/pages/OnlineResourcesListPage/OnlineResourcesListPage');
   require('./modules/Post/pages/OnlineResourceDetailPage/OnlineResourceDetailPage');
+  require('./modules/Post/pages/TutorshipListPage/TutorshipListPage');
+  require('./modules/Post/pages/TutorshipDetailPage/TutorshipDetailPage');
   require('./modules/Post/pages/TeacherRatingsListPage/TeacherRatingsListPage');
   require('./modules/Post/pages/BuyAndSellListPage/BuyAndSellListPage');
   require('./modules/Post/pages/BuyAndSellListPage/BuyAndSellDetailPage');
@@ -77,6 +79,22 @@ export default (
       getComponent={(nextState, cb) => {
         require.ensure([], require => {
           cb(null, require('./modules/Post/pages/OnlineResourceDetailPage/OnlineResourceDetailPage').default);
+        });
+      }}
+    />
+      <Route
+      path="/tutorship"
+      getComponent={(nextState, cb) => {
+        require.ensure([], require => {
+          cb(null, require('./modules/Post/pages/TutorshipListPage/TutorshipListPage').default);
+        });
+      }}
+    />
+    <Route
+      path="/tutorship/:slug-:cuid"
+      getComponent={(nextState, cb) => {
+        require.ensure([], require => {
+          cb(null, require('./modules/Post/pages/TutorshipDetailPage/TutorshipDetailPage').default);
         });
       }}
     />

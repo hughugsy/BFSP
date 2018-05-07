@@ -20,6 +20,7 @@ export function addOnResRequest(post) {
         tags: post.tags,
         title: post.title,
         content: post.content,
+        link: post.link,
       },
     }).then(res => dispatch(addOnRes(res.post)));
   };

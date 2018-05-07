@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 function TRCommentButton(props) {
   const { onToggle } = props;
   return (
-    <div>
+    <div style = {{marginLeft: '15px'}}>
         <button className="btn btn-primary" onClick={onToggle}>Comment</button>
     </div>
   );

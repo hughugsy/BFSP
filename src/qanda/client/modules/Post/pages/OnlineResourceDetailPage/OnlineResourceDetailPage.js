@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import Helmet from 'react-helmet';
-
+import { Link } from 'react-router';
 
 // Import Style
 import styles from '../../components/PostListItem/PostListItem.css';
@@ -13,10 +13,19 @@ import { fetchOnRes } from '../OnlineResourcesListPage/OnlineResourceActions';
 import { getOnlineResource } from '../OnlineResourcesListPage/OnlineResourceReducer';
 
 const OnlineResourceDetailPage = (props) => (
-  <div>
-    <Helmet title={props.onlineresource.title} />
-    <div className={`${styles['single-post']} ${styles['post-detail']}`}>
-      <p className={styles['post-desc']}>{props.onlineresource.content}</p>
+  <div className="card" style = {{marginTop: '20px'}}>
+    <div className="card-header">
+      {props.onlineresource.title}
+    </div>
+    <div className="card-body">
+      <p className="card-text">Description: {props.onlineresource.content}</p>
+      <p className="card-text">Full Link: <a href = {props.onlineresource.link}>{props.onlineresource.link}</a></p>
+      <Link to="/onlineresources" >
+      <a href = "#" className="btn btn-primary">Go to Online Resources</a>
+      </Link>
+    </div>
+    <div className="card-footer text-muted">
+      Date: {props.onlineresource.dateAdded.substring(0, 10)}
     </div>
   </div>
 
