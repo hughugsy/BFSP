@@ -52,7 +52,7 @@ class TutorshipListPage extends Component {
       }
     }
     return (
-      <div style = {{marginTop: '20px'}}>
+      <div style={{ marginTop: '20px' }}>
         {pageContent}
         <TutorshipList handleDeletePost={this.handleDeletePost} posts={this.props.posts} />
       </div>

@@ -94,11 +94,11 @@ export class App extends Component {
           <div className="row">
             <div className="col-2" style={{ top: '20px' }}>
               <div className="list-group" role="tablist" >
-                <Link className="list-group-item list-group-item-action" data-toggle="list" role="tab" to="/">Questions</Link>
-                <Link className="list-group-item list-group-item-action" data-toggle="list" role="tab" to="/onlineresources">Online Resources</Link>
-                <Link className="list-group-item list-group-item-action" data-toggle="list" role="tab" to="/tutorship">Tutorship</Link>
-                <Link className="list-group-item list-group-item-action" data-toggle="list" role="tab" to="/teacherratings">Teacher Ratings</Link>
-                <Link className="list-group-item list-group-item-action" data-toggle="list" role="tab" to="/buyandsells">Buy and Sell</Link>
+                <Link className="list-group-item list-group-item-action" role="tab" to="/">Questions</Link>
+                <Link className="list-group-item list-group-item-action" role="tab" to="/onlineresources">Online Resources</Link>
+                <Link className="list-group-item list-group-item-action" role="tab" to="/tutorship">Tutorship</Link>
+                <Link className="list-group-item list-group-item-action" role="tab" to="/teacherratings">Teacher Ratings</Link>
+                <Link className="list-group-item list-group-item-action" role="tab" to="/buyandsells">Buy and Sell</Link>
               </div>
               <div style={{ marginTop: '20px' }} className="card">
                 <div className="card-body">
