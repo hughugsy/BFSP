@@ -13,7 +13,7 @@ import { fetchBS } from './BuyAndSellActions';
 import { getBuyAndSell } from './BuyAndSellReducer';
 
 const BuyAndSellDetailPage = (props) => (
-  <div className="card" style = {{marginTop: '20px'}}>
+  <div className="card" style={{ marginTop: '20px' }}>
     <div className="card-header">
       {props.buyandsell.title}
     </div>
@@ -21,8 +21,8 @@ const BuyAndSellDetailPage = (props) => (
       <p className="card-text">Price: {props.buyandsell.price} TL</p>
       <p className="card-text">Contact Info: {props.buyandsell.contact}</p>
       <p className="card-text">Description: {props.buyandsell.content}</p>
-      <Link to="/buyandsells" >
-      <a href = "#" className="btn btn-primary">Go to Buy And Sell</a>
+      <Link to="/buyandsells" className="btn btn-primary" >
+        Go to Buy And Sell
       </Link>
     </div>
     <div className="card-footer text-muted">

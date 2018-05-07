@@ -2,6 +2,7 @@ import mongoose from 'mongoose';
 const Schema = mongoose.Schema;
 
 const orSchema = new Schema({
+  tags: [],
   title: { type: 'String', required: true },
   content: { type: 'String', required: true },
   type: { type: 'String', required: true },

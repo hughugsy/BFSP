@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import Select from 'react-select';
 // import 'bootstrap/dist/css/bootstrap.min.css';
-//import 'react-select/dist/react-select.css';
+// import 'react-select/dist/react-select.css';
 
 
 export class PostCreateWidget extends Component {
@@ -62,12 +62,16 @@ export class PostCreateWidget extends Component {
                         multi
                         simpleValue
                         options={[
-                                  { value: 'cs101', label: 'CS101' },
-                                  { value: 'cs102', label: 'CS102' },
-                                  { value: 'cs201', label: 'CS201' },
-                                  { value: 'cs202', label: 'CS202' },
-                                  { value: 'cs319', label: 'CS319' },
-                                  { value: 'cs421', label: 'CS421' },
+                          { value: 'cs101', label: 'CS101' },
+                          { value: 'cs102', label: 'CS102' },
+                          { value: 'cs201', label: 'CS201' },
+                          { value: 'cs202', label: 'CS202' },
+                          { value: 'cs223', label: 'CS223' },
+                          { value: 'cs224', label: 'CS224' },
+                          { value: 'cs342', label: 'CS342' },
+                          { value: 'cs353', label: 'CS353' },
+                          { value: 'cs473', label: 'CS473' },
+                          { value: 'cs476', label: 'CS476' },
                         ]}
                       />
                     </th>
@@ -77,8 +81,8 @@ export class PostCreateWidget extends Component {
               </div>
 
               <div className="panel-body" style={{ overflow: 'hidden' }}>
-                <input onChange={this.handleTitleChange} className="form-control" placeholder = "Title"></input>
-                <textarea onChange={this.handleContentChange} className="form-control" rows="5" id="content" placeholder = "Description"></textarea>
+                <input onChange={this.handleTitleChange} className="form-control" placeholder ="Title"></input>
+                <textarea onChange={this.handleContentChange} className="form-control" rows="5" id="content" placeholder ="Description"></textarea>
                 <div style={{ float: 'right' }}>
                   <button type="submit" style={{ marginTop: '5px', marginRight: '2px' }} className="btn btn-secondary" onClick={this.props.cancelPost} >CANCEL</button>
                   <button type="submit" style={{ marginTop: '5px' }} className="btn btn-primary" onClick={this.addPost}>POST</button>

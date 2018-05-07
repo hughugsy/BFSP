@@ -11,11 +11,14 @@ import PostSheet from '../../components/PostCreateWidget/PostSheet';
 // Import Actions
 import { addPostRequest, fetchPosts } from '../../PostActions';
 import { toggleAddPost } from '../../../App/AppActions';
+import { loadUserProps } from '../../../User/UserActions';
 
 // Import Selectors
 import { getShowAddPost } from '../../../App/AppReducer';
 import { getPosts } from '../../PostReducer';
 import { getUser } from '../../../User/UserReducer';
+
+import cookie from 'react-cookie';
 
 class PostListPage extends Component {
   componentDidMount() {
@@ -28,6 +31,15 @@ class PostListPage extends Component {
       this.props.dispatch(deletePostRequest(post));
     }
   };*/
+
+  componentWillMount() {
+    const loginResult = cookie.load('mernAuth');
+    const token = loginResult ? loginResult.t : null;
+    const username = loginResult ? loginResult.u : null;
+    if (this.props.user == null && token && username) {
+      this.props.dispatch(loadUserProps({ username }));
+    }
+  }
 
 
   onToggle = () => {
@@ -42,18 +54,17 @@ class PostListPage extends Component {
     const { posts, showAddPost, user } = this.props;
 
     let pageContent;
-    if (user) {
-      pageContent = (<PostSheet onToggle={this.onToggle} />);
-    } else if (user && showAddPost) {
-      pageContent = (<PostCreateWidget addPost={this.handleAddPost} />);
-    } else {
+    if (!user) {
       pageContent = null;
+    } else if (!showAddPost) {
+      pageContent = (<PostSheet onToggle={this.onToggle} />);
+    } else {
+      pageContent = (<PostCreateWidget addPost={this.handleAddPost} />);
     }
 
     return (
       <div style={{ marginTop: '20px' }}>
         {pageContent}
-        <PostCreateWidget addPost={this.handleAddPost} showAddPost={this.props.showAddPost} />
         <PostList posts={posts} />
       </div>
     );

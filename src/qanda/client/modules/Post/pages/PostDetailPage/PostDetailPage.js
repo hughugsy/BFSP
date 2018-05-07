@@ -53,7 +53,7 @@ class PostDetailPage extends Component {
     let pageContent;
     if (!this.props.user)
       pageContent = null;
-    else{ 
+    else {
       pageContent = (
         <AnswerPaperSheet onToggle={this.toggleAdd} />
       );
@@ -75,13 +75,17 @@ class PostDetailPage extends Component {
       </div>
 
     );
-    return (
+    let whole = (
       <div>
-        {answerCard}
-        {pageContent}
-        <AnswerList handleDeletePost={this.handleDeletePost} posts={answers} />
+          {answerCard}
+          {pageContent}
+          <AnswerList handleDeletePost={this.handleDeletePost} posts={answers} />
       </div>
     );
+    if (post === undefined) {
+      whole = null;
+    }
+    return (whole);
   }
 }
 

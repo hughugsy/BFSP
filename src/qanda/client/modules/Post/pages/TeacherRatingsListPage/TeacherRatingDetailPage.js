@@ -2,7 +2,7 @@ import React, { PropTypes, Component } from 'react';
 import { connect } from 'react-redux';
 import Helmet from 'react-helmet';
 import { Link } from 'react-router';
-//import 'bootstrap/dist/css/bootstrap.min.css';
+// import 'bootstrap/dist/css/bootstrap.min.css';
 // import { FormattedMessage } from 'react-intl';
 
 // Import Style
@@ -51,7 +51,7 @@ class TeacherRatingDetailPage extends Component {
     let teachingAverage = 0;
     let workloadAverage = 0;
     let teacherArray = this.props.posts.filter(post => post.name === this.props.post.name);
-    for (var i = 0; i < teacherArray.length; i++){
+    for (var i = 0; i < teacherArray.length; i++) {
       gradingAverage += teacherArray[i].grading;
       teachingAverage += teacherArray[i].teaching;
       workloadAverage += teacherArray[i].workload;
@@ -63,26 +63,26 @@ class TeacherRatingDetailPage extends Component {
     teachingAverage = teachingAverage.toFixed(1);
     workloadAverage = workloadAverage.toFixed(1);
 
-    const grading = gradingAverage*10 + '%';
-    const gradingValue = gradingAverage*10 + '/100';
-    const teaching = teachingAverage*10 + '%';
-    const teachingValue = teachingAverage*10 + '/100';
-    const workload = workloadAverage*10 + '%';
-    const workloadValue = workloadAverage*10 + '/100';
+    const grading = gradingAverage * 10 + '%';
+    const gradingValue = gradingAverage * 10 + '/100';
+    const teaching = teachingAverage * 10 + '%';
+    const teachingValue = teachingAverage * 10 + '/100';
+    const workload = workloadAverage * 10 + '%';
+    const workloadValue = workloadAverage * 10 + '/100';
 
     const { post, trcomments, showAddTRComment } = this.props;
     let pageContent;
     if (!this.props.user)
       pageContent = null;
-    
-    else{
-        pageContent = (
+
+    else {
+      pageContent = (
         <TRCommentButton onToggle={this.toggleAdd} />
       );
     }
     if (showAddTRComment) {
       pageContent = (
-        <TRcommentWidget addPost={this.handleAddPost} teacher = {post.slug} cancelPost={this.toggleAdd} />
+        <TRcommentWidget addPost={this.handleAddPost} teacher={post.slug} cancelPost={this.toggleAdd} />
       );
     }
     const answerCard = (
@@ -92,14 +92,14 @@ class TeacherRatingDetailPage extends Component {
           <h3 className={styles['post-title']}>
               {post.name}
           </h3>
-          <div className="progress " style = {{marginBottom: '10px', height: '20px'}}>
-            <div className="progress-bar progress-bar-striped progress-bar-animated bg-info" role="progressbar" style={{width: grading}} aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">Grading: {gradingValue}</div>
+          <div className="progress " style={{ marginBottom: '10px', height: '20px' }}>
+            <div className="progress-bar progress-bar-striped progress-bar-animated bg-info" role="progressbar" style={{ width: grading }} aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">Grading: {gradingValue}</div>
           </div>
-          <div className="progress" style = {{marginBottom: '10px', height: '20px'}}>
-            <div className="progress-bar progress-bar-striped progress-bar-animated bg-info" role="progressbar" style={{width: teaching}} aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">Teaching: {teachingValue}</div>
+          <div className="progress" style={{ marginBottom: '10px', height: '20px' }}>
+            <div className="progress-bar progress-bar-striped progress-bar-animated bg-info" role="progressbar" style={{ width: teaching }} aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">Teaching: {teachingValue}</div>
           </div>
-          <div className="progress" style = {{marginBottom: '10px', height: '20px'}}>
-            <div className="progress-bar progress-bar-striped progress-bar-animated bg-info" role="progressbar" style={{width: workload}} aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">Workload: {workloadValue}</div>
+          <div className="progress" style={{ marginBottom: '10px', height: '20px' }}>
+            <div className="progress-bar progress-bar-striped progress-bar-animated bg-info" role="progressbar" style={{ width: workload }} aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">Workload: {workloadValue}</div>
           </div>
         </div>
       </div>
@@ -122,7 +122,11 @@ TeacherRatingDetailPage.need = [
   },
   () => {
     return fetchTRCOMMENTS();
-  }];
+  },
+  () => {
+    return fetchTRs();
+  },
+];
 
 // Retrieve data from store as props
 function mapStateToProps(state, props) {
@@ -137,17 +141,17 @@ function mapStateToProps(state, props) {
 
 TeacherRatingDetailPage.propTypes = {
   post: PropTypes.shape({
-    path: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
     slug: PropTypes.string.isRequired,
     cuid: PropTypes.string.isRequired,
   }).isRequired,
   showAddTRComment: PropTypes.bool.isRequired,
   dispatch: PropTypes.func.isRequired,
-  trcomments: PropTypes.shape({
+  trcomments: PropTypes.arrayOf(PropTypes.shape({
     content: PropTypes.string.isRequired,
     teacher: PropTypes.string.isRequired,
     cuid: PropTypes.string.isRequired,
-  }).isRequired,
+  }).isRequired).isRequired,
 };
 
 TeacherRatingDetailPage.contextTypes = {

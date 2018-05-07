@@ -3,7 +3,6 @@ const Schema = mongoose.Schema;
 
 const trSchema = new Schema({
   tags: [],
-  path: { type: 'String', required: true },
   name: { type: 'String', required: true },
   grading: { type: 'Number', required: true },
   teaching: { type: 'Number', required: true },

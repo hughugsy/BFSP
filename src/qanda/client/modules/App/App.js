@@ -4,11 +4,13 @@ import { connect } from 'react-redux';
 // import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 import Select from 'react-select';
-//import 'react-select/dist/react-select.css';
+// import 'react-select/dist/react-select.css';
 
 import { sendSelection } from '../Post/PostActions';
-
-
+import { fetchTRs } from '../Post/pages/TeacherRatingsListPage/TeacherRatingActions';
+import { fetchBSs } from '../Post/pages/BuyAndSellListPage/BuyAndSellActions';
+import { fetchOnRs } from '../Post/pages/OnlineResourcesListPage/OnlineResourceActions';
+import { fetchTutorships } from '../Post/pages/TutorshipListPage/TutorshipActions';
 // Import Actions
 import { loadUserProps, logout } from '../../modules/User/UserActions';
 
@@ -25,6 +27,12 @@ export class App extends Component {
     this.state = {
       selectedOption: [],
     };
+  }
+  componentDidMount() {
+    this.props.dispatch(fetchTRs());
+    this.props.dispatch(fetchBSs());
+    this.props.dispatch(fetchOnRs());
+    this.props.dispatch(fetchTutorships());
   }
 
   handleChange = (value) => {
@@ -110,12 +118,16 @@ export class App extends Component {
                     multi
                     simpleValue
                     options={[
-                                { value: 'cs101', label: 'CS101' },
-                                { value: 'cs102', label: 'CS102' },
-                                { value: 'cs201', label: 'CS201' },
-                                { value: 'cs202', label: 'CS202' },
-                                { value: 'cs319', label: 'CS319' },
-                                { value: 'cs421', label: 'CS421' },
+                      { value: 'cs101', label: 'CS101' },
+                      { value: 'cs102', label: 'CS102' },
+                      { value: 'cs201', label: 'CS201' },
+                      { value: 'cs202', label: 'CS202' },
+                      { value: 'cs223', label: 'CS223' },
+                      { value: 'cs224', label: 'CS224' },
+                      { value: 'cs342', label: 'CS342' },
+                      { value: 'cs353', label: 'CS353' },
+                      { value: 'cs473', label: 'CS473' },
+                      { value: 'cs476', label: 'CS476' },
                     ]}
                   />
                 </div>

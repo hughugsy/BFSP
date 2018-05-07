@@ -17,6 +17,7 @@ export function addTutorshipRequest(post) {
   return (dispatch) => {
     return callApi('tutorship', 'post', {
       post: {
+        tags: post.tags,
         title: post.title,
         content: post.content,
         type: post.type,

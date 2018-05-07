@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 // import 'bootstrap/dist/css/bootstrap.min.css';
 import Select from 'react-select';
-//import 'react-select/dist/react-select.css';
+// import 'react-select/dist/react-select.css';
 
 
 export class OnlineResourcesWidget extends Component {
@@ -69,12 +69,16 @@ export class OnlineResourcesWidget extends Component {
                         multi
                         simpleValue
                         options={[
-                                  { value: 'cs101', label: 'CS101' },
-                                  { value: 'cs102', label: 'CS102' },
-                                  { value: 'cs201', label: 'CS201' },
-                                  { value: 'cs202', label: 'CS202' },
-                                  { value: 'cs319', label: 'CS319' },
-                                  { value: 'cs421', label: 'CS421' },
+                          { value: 'cs101', label: 'CS101' },
+                          { value: 'cs102', label: 'CS102' },
+                          { value: 'cs201', label: 'CS201' },
+                          { value: 'cs202', label: 'CS202' },
+                          { value: 'cs223', label: 'CS223' },
+                          { value: 'cs224', label: 'CS224' },
+                          { value: 'cs342', label: 'CS342' },
+                          { value: 'cs353', label: 'CS353' },
+                          { value: 'cs473', label: 'CS473' },
+                          { value: 'cs476', label: 'CS476' },
                         ]}
                       />
                     </th>

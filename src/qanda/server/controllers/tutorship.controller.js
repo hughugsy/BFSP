@@ -58,7 +58,7 @@ export function addTutorshipItem(req, res) {
   newPost.type = sanitizeHtml(newPost.type);
 
   newPost.slug = slug(newPost.title.toLowerCase(), { lowercase: true });
-  newPost.cuid = cuid();
+  newPost.cuid = id;
   newPost.save((err, saved) => {
     if (err) {
       res.status(500).send(err);

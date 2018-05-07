@@ -8,7 +8,7 @@ export class TeacherRatingsList extends Component {
     super(props);
   }
   render() {
-    const teachers = ['Emmelio', 'Cicek'];
+    const teachers = ['Ercument Cicek', 'Don Fabio', 'Matt Stewarts', 'Kyle Bochniak', 'Jose Aldo', 'Anthony Pettis', 'Max Holloway', 'Daniel Cormier', 'Luk Rockhold', 'Khabib Nurmagamedov', 'Magdalena Neur', 'Svetlana Zayceva', 'Jon Jons', 'Alex Irmatov'];
     const myPosts = [];
     for (let k = 0; k < teachers.length; k++) {
       const teacherArray = this.props.posts.filter(post => post.name === teachers[k]);
@@ -56,7 +56,7 @@ export class TeacherRatingsList extends Component {
               post={post}
               key={post.cuid}
               addPost={this.props.addPost}
-              showRate = {this.props.showRate}
+              showRate={this.props.showRate}
             />
           ))
         }

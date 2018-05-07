@@ -29,9 +29,9 @@ class TutorshipListPage extends Component {
     }
   };
 
-  handleAddPost = (title, content, type) => {
+  handleAddPost = (tags, title, content, type) => {
     this.props.dispatch(toggleAddTutorship());
-    this.props.dispatch(addTutorshipRequest({ title, content, type }));
+    this.props.dispatch(addTutorshipRequest({ tags, title, content, type }));
   };
 
   toggleAdd = () => {
@@ -42,8 +42,8 @@ class TutorshipListPage extends Component {
   render() {
     let pageContent;
     if (!this.props.user)
-      pageContent=null;
-    else{
+      pageContent = null;
+    else {
       pageContent = (
         <TutorshipPaperSheet onToggle={this.toggleAdd} />
       );
