@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react';
 
 // Import Components
-import AnswerItem from './OnlineResourcesItem/OnlineResourcesItem';
+import AnswerItem from './AnswerItem/AnswerItem';
 
 function AnswerList(props) {
   return (

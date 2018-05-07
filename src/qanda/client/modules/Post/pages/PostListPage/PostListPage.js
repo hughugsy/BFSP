@@ -1,12 +1,12 @@
 import React, { PropTypes, Component } from 'react';
 import { connect } from 'react-redux';
-import { InstantSearch, SearchBox, Hits } from 'react-instantsearch/dom';
+
 
 // Import Components
 import PostList from '../../components/PostList';
 import PostCreateWidget from '../../components/PostCreateWidget/PostCreateWidget';
 import PostSheet from '../../components/PostCreateWidget/PostSheet';
-import Result from '../../components/Result/Result';
+
 
 // Import Actions
 import { addPostRequest, fetchPosts } from '../../PostActions';
@@ -38,12 +38,16 @@ class PostListPage extends Component {
   };
 
   render() {
-    const { posts } = this.props;
-    // const filteredPosts = posts.filter(post => selections.every((value) => post.tags.includes(value)));
+    const { posts, showAddPost } = this.props;
+    let content = (
+      <PostSheet onToggle={this.onToggle} />
+    );
+    if (showAddPost) {
+      content = (<PostCreateWidget addPost={this.handleAddPost} />);
+    }
     return (
       <div style={{ marginTop: '20px' }}>
-        <PostSheet onToggle={this.onToggle} showAddPost={this.props.showAddPost} />
-        <PostCreateWidget addPost={this.handleAddPost} showAddPost={this.props.showAddPost} />
+        {content}
         <PostList posts={posts} />
       </div>
     );

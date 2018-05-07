@@ -3,8 +3,6 @@ import Select from 'react-select';
 // import 'bootstrap/dist/css/bootstrap.min.css';
 // import 'react-select/dist/react-select.css';
 
-// Import Style
-import styles from './PostCreateWidget.css';
 
 export class PostCreateWidget extends Component {
   constructor(props) {
@@ -47,9 +45,8 @@ export class PostCreateWidget extends Component {
 
   render() {
     const { selectedOption } = this.state;
-    const cls = `${styles.form} ${(this.props.showAddPost ? styles.appear : '')}`;
     return (
-      <div className={cls}>
+      <div >
         <form onSubmit={this.handleSubmit} >
           <div className="container" style={{ padding: '10px', border: '1px solid #AAAAAA', width: '80%' }} >
             <div className="panel panel-default" >
@@ -97,7 +94,6 @@ export class PostCreateWidget extends Component {
 
 PostCreateWidget.propTypes = {
   addPost: PropTypes.func.isRequired,
-  showAddPost: PropTypes.bool.isRequired,
 };
 
 export default PostCreateWidget;

@@ -106,11 +106,11 @@ PostDetailPage.propTypes = {
   }).isRequired,
   showAddAnswer: PropTypes.bool.isRequired,
   dispatch: PropTypes.func.isRequired,
-  answers: PropTypes.shape({
+  answers: PropTypes.arrayOf(PropTypes.shape({
     question: PropTypes.string.isRequired,
     content: PropTypes.string.isRequired,
     cuid: PropTypes.string.isRequired,
-  }).isRequired,
+  }).isRequired).isRequired,
 };
 
 PostDetailPage.contextTypes = {

@@ -3,13 +3,10 @@ import PropTypes from 'prop-types';
 // import 'bootstrap/dist/css/bootstrap.min.css';
 
 
-import styles from './PostCreateWidget.css';
-
 function PostSheet(props) {
-  const { onToggle, showAddPost } = props;
-  const cls = `${styles.form} ${(showAddPost ? '' : styles.appear)}`;
+  const { onToggle } = props;
   return (
-    <div className={cls}>
+    <div >
         <div className="container">
             <table className="table table-bordered" style={{ width: '80%' }}>
                 <thead >
@@ -26,7 +23,6 @@ function PostSheet(props) {
 
 PostSheet.propTypes = {
   onToggle: PropTypes.func.isRequired,
-  showAddPost: PropTypes.bool.isRequired,
 };
 
 export default PostSheet;
