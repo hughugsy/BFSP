@@ -2,7 +2,7 @@ import React, { PropTypes, Component } from 'react';
 import { connect } from 'react-redux';
 import Helmet from 'react-helmet';
 import { Link } from 'react-router';
-import 'bootstrap/dist/css/bootstrap.min.css';
+//import 'bootstrap/dist/css/bootstrap.min.css';
 // import { FormattedMessage } from 'react-intl';
 
 // Import Style
@@ -22,6 +22,7 @@ import { fetchTR, fetchTRs } from './TeacherRatingActions';
 import { getTRComments } from './TRCommentReducer';
 import { getShowAddTRCButton } from './TRCButtonReducer';
 import { getTeacherRating, getTeacherRatings } from './TeacherRatingReducer';
+import { getUser } from '../../../User/UserReducer';
 
 class TeacherRatingDetailPage extends Component {
   componentDidMount() {
@@ -70,9 +71,15 @@ class TeacherRatingDetailPage extends Component {
     const workloadValue = workloadAverage*10 + '/100';
 
     const { post, trcomments, showAddTRComment } = this.props;
-    let pageContent = (
-      <TRCommentButton onToggle={this.toggleAdd} />
-    );
+    let pageContent;
+    if (!this.props.user)
+      pageContent = null;
+    
+    else{
+        pageContent = (
+        <TRCommentButton onToggle={this.toggleAdd} />
+      );
+    }
     if (showAddTRComment) {
       pageContent = (
         <TRcommentWidget addPost={this.handleAddPost} teacher = {post.slug} cancelPost={this.toggleAdd} />
@@ -124,6 +131,7 @@ function mapStateToProps(state, props) {
     posts: getTeacherRatings(state),
     showAddTRComment: getShowAddTRCButton(state),
     trcomments: getTRComments(state, props.params.slug),
+    user: getUser(state),
   };
 }
 

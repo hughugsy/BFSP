@@ -16,6 +16,7 @@ import { toggleAddTutorship } from './TutorshipButtonActions';
 // Import Selectors
 import { getShowAddPost } from './TutorshipButtonReducer';
 import { getTutorships } from './TutorshipReducer';
+import { getUser } from '../../../User/UserReducer';
 
 class TutorshipListPage extends Component {
   componentDidMount() {
@@ -28,9 +29,9 @@ class TutorshipListPage extends Component {
     }
   };
 
-  handleAddPost = (title, content) => {
+  handleAddPost = (title, content, type) => {
     this.props.dispatch(toggleAddTutorship());
-    this.props.dispatch(addTutorshipRequest({ title, content }));
+    this.props.dispatch(addTutorshipRequest({ title, content, type }));
   };
 
   toggleAdd = () => {
@@ -39,14 +40,19 @@ class TutorshipListPage extends Component {
 
   // <a className={styles['add-post-button']} href="#" onClick={this.toggleAdd}><FormattedMessage id="addPost" /></a>
   render() {
-    let pageContent = (
-      <TutorshipPaperSheet onToggle={this.toggleAdd} />
-    );
-    if (this.props.showAddPost) {
-      pageContent = (<TutorshipWidget addPost={this.handleAddPost} cancelPost={this.toggleAdd} />);
+    let pageContent;
+    if (!this.props.user)
+      pageContent=null;
+    else{
+      pageContent = (
+        <TutorshipPaperSheet onToggle={this.toggleAdd} />
+      );
+      if (this.props.showAddPost) {
+        pageContent = (<TutorshipWidget addPost={this.handleAddPost} cancelPost={this.toggleAdd} />);
+      }
     }
     return (
-      <div>
+      <div style = {{marginTop: '20px'}}>
         {pageContent}
         <TutorshipList handleDeletePost={this.handleDeletePost} posts={this.props.posts} />
       </div>
@@ -62,6 +68,7 @@ function mapStateToProps(state) {
   return {
     showAddPost: getShowAddPost(state),
     posts: getTutorships(state),
+    user: getUser(state),
   };
 }
 
@@ -70,6 +77,7 @@ TutorshipListPage.propTypes = {
     title: PropTypes.string.isRequired,
     dateAdded: PropTypes.string.isRequired,
     content: PropTypes.string.isRequired,
+    type: PropTypes.string.isRequired,
   })).isRequired,
   showAddPost: PropTypes.bool.isRequired,
   dispatch: PropTypes.func.isRequired,

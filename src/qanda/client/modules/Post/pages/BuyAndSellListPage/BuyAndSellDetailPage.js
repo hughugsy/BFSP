@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import Helmet from 'react-helmet';
-
+import { Link } from 'react-router';
 
 // Import Style
 import styles from '../../components/PostListItem/PostListItem.css';
@@ -13,14 +13,20 @@ import { fetchBS } from './BuyAndSellActions';
 import { getBuyAndSell } from './BuyAndSellReducer';
 
 const BuyAndSellDetailPage = (props) => (
-  <div>
-    <Helmet title={props.buyandsell.title} />
-    <div className={`${styles['single-post']} ${styles['post-detail']}`}>
-      <h3 className={styles['post-desc']}>{props.buyandsell.title}</h3>
-      <p className={styles['post-desc']}>Price: {props.buyandsell.price} TL</p>
-      <p className={styles['post-desc']}>Contact Info: {props.buyandsell.contact}</p>
-      <p className={styles['post-desc']}>Description: {props.buyandsell.content}</p>
-      <p className={styles['post-desc']}>Date: {props.buyandsell.dateAdded.substring(0, 10)}</p>
+  <div className="card" style = {{marginTop: '20px'}}>
+    <div className="card-header">
+      {props.buyandsell.title}
+    </div>
+    <div className="card-body">
+      <p className="card-text">Price: {props.buyandsell.price} TL</p>
+      <p className="card-text">Contact Info: {props.buyandsell.contact}</p>
+      <p className="card-text">Description: {props.buyandsell.content}</p>
+      <Link to="/buyandsells" >
+      <a href = "#" className="btn btn-primary">Go to Buy And Sell</a>
+      </Link>
+    </div>
+    <div className="card-footer text-muted">
+      Date: {props.buyandsell.dateAdded.substring(0, 10)}
     </div>
   </div>
 

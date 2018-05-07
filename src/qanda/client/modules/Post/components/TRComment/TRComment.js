@@ -6,12 +6,14 @@ import React, { PropTypes } from 'react';
 import styles from './TRComment.css';
 
 function TRcomment(props) {
-  return (
-    <div className={styles['single-post']}>
-      <p className={styles['post-desc']}>{props.post.content}</p>
-      <p className={styles['post-desc']}>Date Added: {props.post.dateAdded.substring(0, 10)}</p>
-      <hr className={styles.divider} />
-    </div>
+  return ( 
+      <div className="card-body">
+        <blockquote className="blockquote mb-0">
+          <p style={{fontSize: '16px'}}>{props.post.content}</p>
+          <footer className="blockquote-footer"><cite title="Source Title" style={{fontSize: '13px'}}>Date Added: {props.post.dateAdded.substring(0, 10)}</cite></footer>
+        </blockquote>
+        <hr className={styles.divider} />
+      </div>
   );
 }
 

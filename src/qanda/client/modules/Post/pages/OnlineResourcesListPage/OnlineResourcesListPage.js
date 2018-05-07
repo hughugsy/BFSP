@@ -16,6 +16,7 @@ import { toggleAddOnRes } from './OrButtonActions';
 // Import Selectors
 import { getShowAddPost } from './OrButtonReducer';
 import { getOnlineResources } from './OnlineResourceReducer';
+import { getUser } from '../../../User/UserReducer';
 
 class OnlineResourcesListPage extends Component {
   componentDidMount() {
@@ -28,9 +29,9 @@ class OnlineResourcesListPage extends Component {
     }
   };
 
-  handleAddPost = (tags, title, content) => {
+  handleAddPost = (tags, title, content, link) => {
     this.props.dispatch(toggleAddOnRes());
-    this.props.dispatch(addOnResRequest({ tags, title, content }));
+    this.props.dispatch(addOnResRequest({ tags, title, content, link }));
   };
 
   toggleAdd = () => {
@@ -39,11 +40,16 @@ class OnlineResourcesListPage extends Component {
 
   // <a className={styles['add-post-button']} href="#" onClick={this.toggleAdd}><FormattedMessage id="addPost" /></a>
   render() {
-    let pageContent = (
-      <OrPaperSheet onToggle={this.toggleAdd} />
-    );
-    if (this.props.showAddPost) {
-      pageContent = (<OnlineResourcesWidget addPost={this.handleAddPost} showAddPost={this.props.showAddPost} cancelPost={this.toggleAdd} />);
+    let pageContent;
+    if (!this.props.user)
+      pageContent=null;
+    else{ 
+      pageContent = (
+        <OrPaperSheet onToggle={this.toggleAdd} />
+      );
+      if (this.props.showAddPost) {
+        pageContent = (<OnlineResourcesWidget addPost={this.handleAddPost} showAddPost={this.props.showAddPost} cancelPost={this.toggleAdd} />);
+      }
     }
     return (
       <div style={{ marginTop: '20px' }}>
@@ -62,6 +68,7 @@ function mapStateToProps(state) {
   return {
     showAddPost: getShowAddPost(state),
     posts: getOnlineResources(state),
+    user: getUser(state),
   };
 }
 

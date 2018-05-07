@@ -20,6 +20,7 @@ import { fetchPost } from '../../PostActions';
 import { getAnswers } from './AnswerReducer';
 import { getShowAddAnswer } from './AnswerButtonReducer';
 import { getPost } from '../../PostReducer';
+import { getUser } from '../../../User/UserReducer';
 
 class PostDetailPage extends Component {
 
@@ -49,9 +50,14 @@ class PostDetailPage extends Component {
   render() {
     const { post, answers, showAddAnswer } = this.props;
     const question = post.slug;
-    let pageContent = (
-      <AnswerPaperSheet onToggle={this.toggleAdd} />
-    );
+    let pageContent;
+    if (!this.props.user)
+      pageContent = null;
+    else{ 
+      pageContent = (
+        <AnswerPaperSheet onToggle={this.toggleAdd} />
+      );
+    }
     if (showAddAnswer) {
       pageContent = (
         <AnswerWidget addPost={this.handleAddPost} question={question} cancelPost={this.toggleAdd} />
@@ -94,6 +100,7 @@ function mapStateToProps(state, props) {
     post: getPost(state, props.params.cuid),
     showAddAnswer: getShowAddAnswer(state),
     answers: getAnswers(state, props.params.slug),
+    user: getUser(state),
   };
 }
 

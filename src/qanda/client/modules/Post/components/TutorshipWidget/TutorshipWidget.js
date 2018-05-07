@@ -1,9 +1,9 @@
 import React, { Component, PropTypes } from 'react';
 // import { injectIntl, intlShape, } from 'react-intl';
 // import ReactTags from 'react-tag-autocomplete';
-import 'bootstrap/dist/css/bootstrap.min.css';
+//import 'bootstrap/dist/css/bootstrap.min.css';
 import Select from 'react-select';
-import 'react-select/dist/react-select.css';
+//import 'react-select/dist/react-select.css';
 
 
 
@@ -13,6 +13,7 @@ export class TutorshipWidget extends Component {
     this.state = {
       title: '',
       content: '',
+      type: 'HIRE',
     };
   }
   addPost = () => {
@@ -22,12 +23,13 @@ export class TutorshipWidget extends Component {
       this.props.addPost(titleRef.value, contentRef.value);
       titleRef.value = contentRef.value = '';
     }*/
-    const { title, content } = this.state;
+    const { title, content, type} = this.state;
     if (title && content) {
-      this.props.addPost(title, content);
+      this.props.addPost(title, content, type);
       this.setState({
         title: '',
         content: '',
+        type: 'HIRE',
       });
     }
   };
@@ -44,12 +46,17 @@ export class TutorshipWidget extends Component {
     });
   }
 
-
+  handleTypeChange = (event) => {
+    console.log(event.target);
+    this.setState({
+      type: event.target.value,
+    });
+  }
 
   render() {
   
     return (
-      <form onSubmit={this.handleSubmit} >
+      <form onSubmit={this.handleSubmit} style={{marginBottom: '20px'}}>
       <div className="container" style={{padding: '10px', border: '1px solid #AAAAAA', width: '80%'}} >
         <div className="panel panel-default" >
           <div className="panel-heading">
@@ -84,8 +91,19 @@ export class TutorshipWidget extends Component {
           </div>
 
           <div className="panel-body" style={{overflow: 'hidden'}}>
-              <input type="text" onChange={this.handleTitleChange} placeholder="write your title here" style={{width: '38%',     padding: '5px 5px',  margin: '5px 0'}} />
-              <textarea  onChange={this.handleContentChange} className="form-control" rows="5" ></textarea>
+              <div className="input-group mb-3">
+                <input type="text" className="form-control" placeholder="Title" aria-describedby="basic-addon1" onChange={this.handleTitleChange} />
+              </div>
+              <div className="input-group mb-3">
+                <div className="input-group-prepend">
+                  <label className="input-group-text" htmlFor="inputGroupSelect01">Options</label>
+                </div>
+                <select className="custom-select" id="inputGroupSelect01" onChange={this.handleTypeChange}>
+                  <option defaultValue>HIRE</option>
+                  <option >TUTOR</option>
+                </select>
+              </div>
+              <textarea  onChange={this.handleContentChange} placeholder="Description" className="form-control" rows="5" ></textarea>
               <div style={{float: 'right'}}>
                 <button type="submit"  style={{marginTop: '5px', marginRight: '2px'}} className="btn btn-secondary" onClick={this.props.cancelPost} >CANCEL</button>         
                 <button type="submit" style={{marginTop: '5px'}} className="btn btn-primary" onClick={this.addPost}>POST</button>

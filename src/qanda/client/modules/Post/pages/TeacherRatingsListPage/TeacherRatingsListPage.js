@@ -12,6 +12,7 @@ import { toggleAddTR } from './TRButtonActions';
 // Import Selectors
 import { getShowAddPost } from './TRButtonReducer';
 import { getTeacherRatings } from './TeacherRatingReducer';
+import { getUser } from '../../../User/UserReducer';
 
 class TeacherRatingsListPage extends Component {
   componentDidMount() {
@@ -33,7 +34,7 @@ class TeacherRatingsListPage extends Component {
     return (
       <div>
         {/* <TeacherRatingsWidget addPost={this.handleAddPost} showAddPost={true/*this.props.showAddPost} />*/}
-        <TeacherRatingsList handleDeletePost={this.handleDeletePost} posts={this.props.posts} addPost ={this.handleAddPost} />
+        <TeacherRatingsList showRate = {this.props.user} handleDeletePost={this.handleDeletePost} posts={this.props.posts} addPost ={this.handleAddPost} />
       </div>
     );
   }
@@ -47,6 +48,7 @@ function mapStateToProps(state) {
   return {
     showAddPost: getShowAddPost(state),
     posts: getTeacherRatings(state),
+    user: getUser(state),
   };
 }
 

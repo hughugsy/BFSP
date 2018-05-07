@@ -27,19 +27,19 @@ export class AnswerWidget extends Component {
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit} >
+      <form>
         <div className="container" style={{ padding: '10px', border: '1px solid #AAAAAA', width: '80%' }} >
           <div className="panel panel-default" >
             <div className="panel-heading">
               <label htmlFor="content">Type your answer here:</label>
             </div>
             <div className="panel-body" style={{ overflow: 'hidden' }}>
-              <textarea className="form-control" rows="5" id="content"></textarea>
+              <textarea onChange = {this.handleContentChange} className="form-control" rows="5" id="content"></textarea>
               <div style={{ float: 'right' }}>
                 <button type="submit" className="btn btn-secondary" onClick={this.props.cancelPost} style={{ marginRight: '3px', marginTop: '5px' }}>CANCEL</button>
                 <button type="submit" className="btn btn-primary" onClick={this.addPost} style={{ marginTop: '5px' }} >POST</button>
-              </div >
-            </div >
+              </div>
+            </div>
           </div>
         </div>
       </form>

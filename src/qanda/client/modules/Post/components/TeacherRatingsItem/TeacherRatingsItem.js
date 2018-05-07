@@ -23,15 +23,19 @@ class TeacherRatingsItem extends Component {
   render(){
     const { post } = this.props;
     let pageContent;
-    if (!this.state.showRateForm){
-      pageContent = (<button className="btn btn-primary" onClick = {this.handleClickRate}>Rate</button>);
-    }
+    if (!this.props.showRate)
+      pageContent = null;
     else{
-      pageContent = (
-        <div>
-          <TeacherRatingsWidget handleClickCancel = {this.handleClickCancel} addPost = {this.props.addPost} teacher={post.name } showAddPost = {true} />
-        </div>
-      );
+      if (!this.state.showRateForm){
+        pageContent = (<button className="btn btn-primary" onClick = {this.handleClickRate}>Rate</button>);
+      }
+      else{
+        pageContent = (
+          <div>
+            <TeacherRatingsWidget handleClickCancel = {this.handleClickCancel} addPost = {this.props.addPost} teacher={post.name } showAddPost = {true} />
+          </div>
+        );
+      }
     }
     /*<div className={styles['single-post']}>
           <h3 className={styles['post-title']}>

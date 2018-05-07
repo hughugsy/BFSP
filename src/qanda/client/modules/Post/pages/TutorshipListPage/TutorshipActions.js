@@ -19,6 +19,7 @@ export function addTutorshipRequest(post) {
       post: {
         title: post.title,
         content: post.content,
+        type: post.type,
       },
     }).then(res => dispatch(addTutorship(res.post)));
   };

@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 // import 'bootstrap/dist/css/bootstrap.min.css';
 import Select from 'react-select';
-// import 'react-select/dist/react-select.css';
+//import 'react-select/dist/react-select.css';
 
 
 export class OnlineResourcesWidget extends Component {
@@ -10,16 +10,18 @@ export class OnlineResourcesWidget extends Component {
     this.state = {
       title: '',
       content: '',
+      link: '',
       selectedOption: [],
     };
   }
   addPost = () => {
-    const { title, content, selectedOption } = this.state;
+    const { title, content, link, selectedOption } = this.state;
     if (title && content) {
-      this.props.addPost(selectedOption, title, content);
+      this.props.addPost(selectedOption, title, content, link);
       this.setState({
         title: '',
         content: '',
+        link: '',
         selectedOption: [],
       });
     }
@@ -28,6 +30,12 @@ export class OnlineResourcesWidget extends Component {
   handleTitleChange = (event) => {
     this.setState({
       title: event.target.value,
+    });
+  }
+
+  handleLinkChange = (event) => {
+    this.setState({
+      link: event.target.value,
     });
   }
 
@@ -76,8 +84,9 @@ export class OnlineResourcesWidget extends Component {
               </div>
 
               <div className="panel-body" style={{ overflow: 'hidden' }}>
-                <input onChange={this.handleTitleChange} className="form-control"></input>
-                <textarea onChange={this.handleContentChange} className="form-control" rows="5" id="content" ></textarea>
+                <input onChange={this.handleTitleChange} className="form-control" placeholder="Title"></input>
+                <input onChange={this.handleLinkChange} className="form-control" placeholder="Link"></input>
+                <textarea onChange={this.handleContentChange} className="form-control" rows="5" id="content" placeholder="Description"></textarea>
                 <div style={{ float: 'right' }}>
                   <button type="submit" style={{ marginTop: '5px', marginRight: '2px' }} className="btn btn-secondary" onClick={this.props.cancelPost} >CANCEL</button>
                   <button type="submit" style={{ marginTop: '5px' }} className="btn btn-primary" onClick={this.addPost}>POST</button>

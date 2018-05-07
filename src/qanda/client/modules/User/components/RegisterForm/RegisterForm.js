@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import { FormattedMessage } from 'react-intl';
-import 'bootstrap/dist/css/bootstrap.min.css';
+//import 'bootstrap/dist/css/bootstrap.min.css';
 import { connect } from 'react-redux';
 import { getRegisterSuccess, getRegisterFailure} from '../../UserReducer';
 import { registerSuccess, registerFailure} from '../../UserActions';

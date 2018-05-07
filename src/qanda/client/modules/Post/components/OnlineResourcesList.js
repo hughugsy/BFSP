@@ -5,7 +5,7 @@ import OnlineResourcesItem from './OnlineResourcesItem/OnlineResourcesItem';
 
 function OnlineResourcesList(props) {
   return (
-    <div className="listView">
+    <div className="card-columns">
       {
         props.posts.map(post => (
           <OnlineResourcesItem
@@ -22,6 +22,7 @@ OnlineResourcesList.propTypes = {
   posts: PropTypes.arrayOf(PropTypes.shape({
     tags: PropTypes.arrayOf(PropTypes.string).isRequired,
     title: PropTypes.string.isRequired,
+    link: PropTypes.string.isRequired,
     dateAdded: PropTypes.string.isRequired,
     content: PropTypes.string.isRequired,
     slug: PropTypes.string.isRequired,

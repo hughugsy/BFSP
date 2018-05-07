@@ -37,6 +37,7 @@ export function addTutorshipItem(req, res) {
     path: 'tutorship',
     title: req.body.post.title,
     content: req.body.post.content,
+    type: req.body.post.type,
     slug: slug(req.body.post.title.toLowerCase(), { lowercase: true }),
     cuid: id,
   };
@@ -54,6 +55,7 @@ export function addTutorshipItem(req, res) {
   // Let's sanitize inputs
   newPost.title = sanitizeHtml(newPost.title);
   newPost.content = sanitizeHtml(newPost.content);
+  newPost.type = sanitizeHtml(newPost.type);
 
   newPost.slug = slug(newPost.title.toLowerCase(), { lowercase: true });
   newPost.cuid = cuid();

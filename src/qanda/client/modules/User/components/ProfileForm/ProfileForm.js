@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import { FormattedMessage } from 'react-intl';
 import { getUpdateSuccess, getUpdateFailure} from '../../UserReducer';
 import { updateUserInfoSuccess, updateUserInfoFailure} from '../../UserActions';
-import 'bootstrap/dist/css/bootstrap.min.css';
+//import 'bootstrap/dist/css/bootstrap.min.css';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
 // Import Style

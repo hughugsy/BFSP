@@ -15,6 +15,7 @@ import { toggleAddPost } from '../../../App/AppActions';
 // Import Selectors
 import { getShowAddPost } from '../../../App/AppReducer';
 import { getPosts } from '../../PostReducer';
+import { getUser } from '../../../User/UserReducer';
 
 class PostListPage extends Component {
   componentDidMount() {
@@ -40,9 +41,15 @@ class PostListPage extends Component {
   render() {
     const { posts } = this.props;
     // const filteredPosts = posts.filter(post => selections.every((value) => post.tags.includes(value)));
+    let pageContent;
+    if (this.props.user){
+      pageContent = (<PostSheet onToggle={this.onToggle} showAddPost={this.props.showAddPost} />);
+    }
+    else
+      pageContent = null;
     return (
       <div style={{ marginTop: '20px' }}>
-        <PostSheet onToggle={this.onToggle} showAddPost={this.props.showAddPost} />
+        {pageContent}
         <PostCreateWidget addPost={this.handleAddPost} showAddPost={this.props.showAddPost} />
         <PostList posts={posts} />
       </div>
@@ -58,6 +65,7 @@ function mapStateToProps(state) {
   return {
     showAddPost: getShowAddPost(state),
     posts: getPosts(state),
+    user: getUser(state),
   };
 }
 

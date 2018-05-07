@@ -7,15 +7,13 @@ import styles from './OnlineResourcesItem.css';
 
 function OnlineResourcesItem(props) {
   return (
-    <div className={styles['single-post']}>
-      <h3 className={styles['post-title']}>
-        <Link to={`/onlineresources/${props.post.slug}-${props.post.cuid}`} >
-          {props.post.title}
-        </Link>
-      </h3>
-<p className={styles['post-title']}>{props.post.dateAdded}</p>  
-      <p className={styles['post-desc']}>{props.post.content}</p>
-      <hr className={styles.divider} />
+    <div className="card border-info mb-3">
+      <div className="card-body">
+        <h5 className="card-title"><Link to={`/onlineresources/${props.post.slug}-${props.post.cuid}`}>{props.post.title}</Link></h5>
+        <p className="card-text">Link: <a href = {props.post.link} target="_blank">Click Here</a></p>
+        <p className="card-text">Description: {props.post.content}</p>
+        <p className="card-text">Date: {props.post.dateAdded.substring(0, 10)}</p>
+      </div>
     </div>
   );
 }
@@ -25,6 +23,7 @@ OnlineResourcesItem.propTypes = {
     tags: PropTypes.arrayOf(PropTypes.string).isRequired,
     title: PropTypes.string.isRequired,
     dateAdded: PropTypes.string.isRequired,
+    link: PropTypes.string.isRequired,
     content: PropTypes.string.isRequired,
     slug: PropTypes.string.isRequired,
     cuid: PropTypes.string.isRequired,

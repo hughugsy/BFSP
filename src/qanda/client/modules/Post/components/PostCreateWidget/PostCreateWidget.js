@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import Select from 'react-select';
 // import 'bootstrap/dist/css/bootstrap.min.css';
-// import 'react-select/dist/react-select.css';
+//import 'react-select/dist/react-select.css';
 
 // Import Style
 import styles from './PostCreateWidget.css';
@@ -80,8 +80,8 @@ export class PostCreateWidget extends Component {
               </div>
 
               <div className="panel-body" style={{ overflow: 'hidden' }}>
-                <input onChange={this.handleTitleChange} className="form-control"></input>
-                <textarea onChange={this.handleContentChange} className="form-control" rows="5" id="content" ></textarea>
+                <input onChange={this.handleTitleChange} className="form-control" placeholder = "Title"></input>
+                <textarea onChange={this.handleContentChange} className="form-control" rows="5" id="content" placeholder = "Description"></textarea>
                 <div style={{ float: 'right' }}>
                   <button type="submit" style={{ marginTop: '5px', marginRight: '2px' }} className="btn btn-secondary" onClick={this.props.cancelPost} >CANCEL</button>
                   <button type="submit" style={{ marginTop: '5px' }} className="btn btn-primary" onClick={this.addPost}>POST</button>

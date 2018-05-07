@@ -5,7 +5,10 @@ import TRComment from './TRComment/TRComment';
 
 function TRCommentList(props) {
   return (
-    <div className="listView">
+    <div className="card" style = {{marginTop: '20px', marginLeft: '15px'}}>
+      <div className="card-header">
+        Comment Section
+      </div>
       {
         props.posts.map(post => (
           <TRComment
