@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 // import { injectIntl, intlShape, } from 'react-intl';
 // import ReactTags from 'react-tag-autocomplete';
-import 'bootstrap/dist/css/bootstrap.min.css';
+//import 'bootstrap/dist/css/bootstrap.min.css';
 import Select from 'react-select';
 import 'react-select/dist/react-select.css';
 

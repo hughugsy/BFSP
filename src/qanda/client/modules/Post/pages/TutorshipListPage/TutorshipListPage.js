@@ -46,7 +46,7 @@ class TutorshipListPage extends Component {
       pageContent = (<TutorshipWidget addPost={this.handleAddPost} cancelPost={this.toggleAdd} />);
     }
     return (
-      <div>
+      <div style={{ marginTop: '20px' }}>
         {pageContent}
         <TutorshipList handleDeletePost={this.handleDeletePost} posts={this.props.posts} />
       </div>

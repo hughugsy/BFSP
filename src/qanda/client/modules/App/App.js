@@ -96,7 +96,7 @@ export class App extends Component {
               <div className="list-group" role="tablist" >
                 <Link className="list-group-item list-group-item-action" role="tab" to="/">Questions</Link>
                 <Link className="list-group-item list-group-item-action" role="tab" to="/onlineresources">Online Resources</Link>
-                <Link className="list-group-item list-group-item-action" role="tab" >Tutorship</Link>
+                <Link className="list-group-item list-group-item-action" role="tab" to="/tutorship">Tutorship</Link>
                 <Link className="list-group-item list-group-item-action" role="tab" to="/teacherratings">Teacher Ratings</Link>
                 <Link className="list-group-item list-group-item-action" role="tab" to="/buyandsells">Buy and Sell</Link>
               </div>

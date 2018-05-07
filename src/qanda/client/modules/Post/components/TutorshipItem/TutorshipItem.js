@@ -13,8 +13,8 @@ function TutorshipItem(props) {
           {props.post.title}
         </Link>
       </h3>
-      <p className={styles['post-title']}>{props.post.dateAdded}</p>
       <p className={styles['post-desc']}>{props.post.content}</p>
+      <p >{props.post.dateAdded.substring(0,10)}</p>
       <hr className={styles.divider} />
     </div>
   );
