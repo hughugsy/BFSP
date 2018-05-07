@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 function AnswerPaperSheet(props) {
   const { onToggle } = props;
   return (
-    <div className="accordion">
+    <div className="accordion" style = {{marginLeft: '15px'}}>
           <button type="submit" className="btn btn-primary" onClick={onToggle}>ANSWER</button>
     </div>
   );
